@@ -592,11 +592,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
       propertyPath: handMovementScale.x
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
       propertyPath: handMovementScale.y
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
@@ -952,7 +952,7 @@ MonoBehaviour:
   isHeadMounted: 0
   mirrorZAxis: 0
   destroyHands: 1
-  handMovementScale: {x: 12, y: 12, z: 1}
+  handMovementScale: {x: 1, y: 1, z: 1}
   enableRecordPlayback: 0
   recordingAsset: {fileID: 0}
   recorderSpeed: 1
