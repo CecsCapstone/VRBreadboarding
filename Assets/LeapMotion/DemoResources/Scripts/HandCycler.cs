@@ -6,23 +6,29 @@
 
 using UnityEngine;
 using System.Collections;
+using Leap;
 
 public class HandCycler : MonoBehaviour {
 
   public HandModel[] leftHands;
   public HandModel[] rightHands;
 
+  Leap.Controller mc;
+
   private int hand_index_ = 0;
 
   void Start() {
     SetNewHands();
+      mc = new Controller();
+      mc.EnableGesture(Gesture.GestureType.TYPE_SCREEN_TAP);
+      Listener ll = new Leap.Listener();
+      mc.AddListener(ll);
   }
 
   protected void SetNewHands() {
     HandController controller = GetComponent<HandController>();
     controller.leftGraphicsModel = leftHands[hand_index_];
     controller.rightGraphicsModel = rightHands[hand_index_];
-    controller.DestroyAllHands();
   }
 
   void OnGUI() {
@@ -37,5 +43,45 @@ public class HandCycler : MonoBehaviour {
         SetNewHands();
       }
     }
+  }
+
+  void Update()
+  {
+      Frame frame = mc.Frame();
+      foreach (Gesture gesture in frame.Gestures())
+      {
+          switch (gesture.Type)
+          {
+              case (Gesture.GestureType.TYPECIRCLE):
+                  {
+                      Debug.Log("Circle gesture recognized.");
+                      break;
+                  }
+              case (Gesture.GestureType.TYPEINVALID):
+                  {
+                      Debug.Log("Invalid gesture recognized.");
+                      break;
+                  }
+              case (Gesture.GestureType.TYPEKEYTAP):
+                  {
+                      Debug.Log("Key Tap gesture recognized.");
+                      break;
+                  }
+              case (Gesture.GestureType.TYPESCREENTAP):
+                  {
+                      Debug.Log("Screen tap gesture recognized.");
+                      break;
+                  }
+              case (Gesture.GestureType.TYPESWIPE):
+                  {
+                      Debug.Log("Swipe gesture recognized.");
+                      break;
+                  }
+              default:
+                  {
+                      break;
+                  }
+          }
+      }
   }
 }
