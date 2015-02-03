@@ -598,6 +598,10 @@ Prefab:
       propertyPath: handMovementScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
+      propertyPath: enableRecordPlayback
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
   m_RootGameObject: {fileID: 974101492}
@@ -924,6 +928,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 974101494}
   - 114: {fileID: 974101493}
+  - 114: {fileID: 974101495}
   m_Layer: 0
   m_Name: HandController
   m_TagString: Untagged
@@ -969,6 +974,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &974101495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 974101492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41d4c409e918bc43a0416ceae3951fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395344387
 GameObject:
   m_ObjectHideFlags: 0

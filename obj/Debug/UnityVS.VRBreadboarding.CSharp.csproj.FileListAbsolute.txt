@@ -1,0 +1,14 @@
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\obj\Debug\UnityVS.VRBreadboarding.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\Assembly-UnityScript-firstpass.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\LeapCSharp.NET3.5.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\obj\Debug\Assembly-CSharp.dll
+C:\Users\Nathan\Documents\GitHub\VRBreadboarding\obj\Debug\Assembly-CSharp.pdb
