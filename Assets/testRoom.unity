@@ -125,7 +125,8 @@ Prefab:
       propertyPath: m_TagString
       value: GrabbableObject
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_RootGameObject: {fileID: 1733419169}
   m_IsPrefabParent: 0
@@ -298,7 +299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400034, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100042, guid: 4b359b2f0d7d14ef0a97b45ec153a3ef, type: 2}
       propertyPath: m_Name
@@ -451,7 +452,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.432000011
+      value: -.239999995
       objectReference: {fileID: 0}
     - target: {fileID: 480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_LocalPosition.y
@@ -479,7 +480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 180676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_Name
@@ -493,7 +494,8 @@ Prefab:
       propertyPath: m_TagString
       value: GrabbableObject
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_RootGameObject: {fileID: 1411214144}
   m_IsPrefabParent: 0
@@ -641,7 +643,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &378377643
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,14 +678,14 @@ Transform:
   - {fileID: 1112370204}
   - {fileID: 495640684}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!114 &378377645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 378377643}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feefc2f01ecd948f9bd88d185b4fc0ad, type: 3}
   m_Name: 
@@ -1275,7 +1277,8 @@ Prefab:
       propertyPath: m_TagString
       value: GrabbableObject
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_RootGameObject: {fileID: 680178911}
   m_IsPrefabParent: 0
@@ -1385,7 +1388,6 @@ GameObject:
   - 33: {fileID: 680178916}
   - 65: {fileID: 680178915}
   - 23: {fileID: 680178914}
-  - 114: {fileID: 680178913}
   - 54: {fileID: 680178912}
   m_Layer: 0
   m_Name: Cube
@@ -1410,26 +1412,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &680178913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298,
-    type: 2}
-  m_PrefabInternal: {fileID: 666703146}
-  m_GameObject: {fileID: 680178911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657a4e86fe99b4c21890a20fc9d60510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useAxisAlignment: 0
-  rightHandAxis: {x: 0, y: 0, z: 0}
-  objectAxis: {x: 0, y: 0, z: 0}
-  rotateQuickly: 1
-  centerGrabbedObject: 0
-  breakableJoint: {fileID: 0}
-  breakForce: 0
-  breakTorque: 0
 --- !u!23 &680178914
 Renderer:
   m_ObjectHideFlags: 0
@@ -1894,6 +1876,7 @@ GameObject:
   - 4: {fileID: 974101494}
   - 114: {fileID: 974101493}
   - 114: {fileID: 974101495}
+  - 114: {fileID: 974101496}
   m_Layer: 0
   m_Name: HandController
   m_TagString: Untagged
@@ -1945,9 +1928,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 974101492}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b41d4c409e918bc43a0416ceae3951fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &974101496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 974101492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afdb78497bf496e4fb866669586534a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1100551425
@@ -2071,7 +2065,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.34799999
+      value: -.179000005
       objectReference: {fileID: 0}
     - target: {fileID: 480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2113,7 +2107,8 @@ Prefab:
       propertyPath: m_TagString
       value: GrabbableObject
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
   m_RootGameObject: {fileID: 1147281526}
   m_IsPrefabParent: 0
@@ -2129,7 +2124,6 @@ GameObject:
   - 33: {fileID: 1147281531}
   - 65: {fileID: 1147281530}
   - 23: {fileID: 1147281529}
-  - 114: {fileID: 1147281528}
   - 54: {fileID: 1147281527}
   m_Layer: 0
   m_Name: Cube
@@ -2154,26 +2148,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1147281528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298,
-    type: 2}
-  m_PrefabInternal: {fileID: 1124462653}
-  m_GameObject: {fileID: 1147281526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657a4e86fe99b4c21890a20fc9d60510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useAxisAlignment: 0
-  rightHandAxis: {x: 0, y: 0, z: 0}
-  objectAxis: {x: 0, y: 0, z: 0}
-  rotateQuickly: 1
-  centerGrabbedObject: 0
-  breakableJoint: {fileID: 0}
-  breakForce: 0
-  breakTorque: 0
 --- !u!23 &1147281529
 Renderer:
   m_ObjectHideFlags: 0
@@ -2223,7 +2197,7 @@ Transform:
   m_PrefabInternal: {fileID: 1124462653}
   m_GameObject: {fileID: 1147281526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.34799999, y: .788999975, z: -.514999986}
+  m_LocalPosition: {x: -.179000005, y: .788999975, z: -.514999986}
   m_LocalScale: {x: .0346415304, y: .0346415304, z: .0346415304}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2439,7 +2413,6 @@ GameObject:
   - 33: {fileID: 1411214148}
   - 65: {fileID: 1411214147}
   - 23: {fileID: 1411214146}
-  - 114: {fileID: 1411214145}
   - 54: {fileID: 1411214150}
   m_Layer: 0
   m_Name: Cube
@@ -2448,26 +2421,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1411214145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298,
-    type: 2}
-  m_PrefabInternal: {fileID: 260691715}
-  m_GameObject: {fileID: 1411214144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657a4e86fe99b4c21890a20fc9d60510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useAxisAlignment: 0
-  rightHandAxis: {x: 0, y: 0, z: 0}
-  objectAxis: {x: 0, y: 0, z: 0}
-  rotateQuickly: 1
-  centerGrabbedObject: 0
-  breakableJoint: {fileID: 0}
-  breakForce: 0
-  breakTorque: 0
 --- !u!23 &1411214146
 Renderer:
   m_ObjectHideFlags: 0
@@ -2517,11 +2470,11 @@ Transform:
   m_PrefabInternal: {fileID: 260691715}
   m_GameObject: {fileID: 1411214144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.432000011, y: .788999975, z: -.708000004}
+  m_LocalPosition: {x: -.239999995, y: .788999975, z: -.708000004}
   m_LocalScale: {x: .0346415304, y: .0346415304, z: .0346415304}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!54 &1411214150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2833,7 +2786,6 @@ GameObject:
   - 33: {fileID: 1733419174}
   - 65: {fileID: 1733419173}
   - 23: {fileID: 1733419172}
-  - 114: {fileID: 1733419171}
   - 54: {fileID: 1733419170}
   m_Layer: 0
   m_Name: Cube
@@ -2858,26 +2810,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1733419171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298,
-    type: 2}
-  m_PrefabInternal: {fileID: 2665804}
-  m_GameObject: {fileID: 1733419169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657a4e86fe99b4c21890a20fc9d60510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useAxisAlignment: 0
-  rightHandAxis: {x: 0, y: 0, z: 0}
-  objectAxis: {x: 0, y: 0, z: 0}
-  rotateQuickly: 1
-  centerGrabbedObject: 0
-  breakableJoint: {fileID: 0}
-  breakForce: 0
-  breakTorque: 0
 --- !u!23 &1733419172
 Renderer:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using Leap;
 
 [CustomEditor(typeof(HandController))]
 public class HandControllerEditor : Editor {
