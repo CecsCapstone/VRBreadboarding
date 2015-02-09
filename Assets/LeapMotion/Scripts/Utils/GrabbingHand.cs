@@ -204,7 +204,7 @@ public class GrabbingHand : MonoBehaviour {
     Vector leap_thumb_tip = leap_hand.Fingers[0].TipPosition;
     float closest_distance = Mathf.Infinity;
 
-    // Check thumb tip distance to joints on all other fingers.
+    // Check thumb trip distance to joints on all other fingers.
     // If it's close enough, you're pinching.
     for (int i = 1; i < HandModel.NUM_FINGERS; ++i) {
       Finger finger = leap_hand.Fingers[i];

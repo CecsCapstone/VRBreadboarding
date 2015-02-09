@@ -31,26 +31,31 @@ public class SimpleGestureRecognize : MonoBehaviour {
 					float y = fingerPosition.y;
 					float z = fingerPosition.z;
 					Vector3 position = new Vector3(x,y,z);
-
-					GrabbableObject closest = GetComponent<GrabbableObject>();
+					Collider[] close_things =
+						Physics.OverlapSphere(position.normalized, 2, -1);
+					
+					GameObject closest = null;
 					float closestDistance = Mathf.Infinity;
-					GrabbableObject[] listOfGameObjects = new GrabbableObject[10];
-					listOfGameObjects = GetComponents<GrabbableObject>();
+					GrabbableObject[] listOfGrabbableObjects= new GrabbableObject[10];
+					GameObject[] listOfGameObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
 
-					for(int i = 0; i < 10; i++)
-					{
-						Debug.Log (i);
-						if(listOfGameObjects[i] != null)
+					
+
+					//float closest_sqr_distance = 2 * 2;
+					
+					for (int j = 0; j < listOfGameObjects.Length; ++j) {
+						if(listOfGameObjects[j] != null)
 						{
-							Debug.Log(listOfGameObjects[i]);
-							float dist = Vector3.Distance (position, listOfGameObjects[i].transform.position);
+							float dist = Vector3.Distance (position.normalized, listOfGameObjects[j].transform.position);
 							if(closestDistance > dist)
 							{
-								closest = listOfGameObjects[i];
+								closest = listOfGameObjects[j];
+								closestDistance = dist;
 							}
 						}
 					}
-					Debug.Log (closest.ToString());
+				
+					Debug.Log (closest.name.ToString());
 				}
 			}
                 //Debug.Log(gest.Type.ToString());
