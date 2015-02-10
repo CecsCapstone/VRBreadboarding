@@ -24,7 +24,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 						HandController controllerGO = GetComponent<HandController>();
 						//Debug.Log (controllerGO.transform.position);
 						
-						float x = -(fingerPosition.x/1000)+controllerGO.transform.position.x;
+						float x = (fingerPosition.x/1000)+controllerGO.transform.position.x;
 						float y = (fingerPosition.y/1000)+controllerGO.transform.position.y;
 						float z = -(fingerPosition.z/1000)+controllerGO.transform.position.z;
 						
