@@ -59,7 +59,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 								if (GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching()) {
 									selected = closest;
 									selected.light.color = UnityEngine.Color.green;
-								} else if(selected.light.color != UnityEngine.Color.red) {
+								} else if(selected != null && selected.light.color != UnityEngine.Color.red) {
 									selected = null;
 									light.intensity = 0;
 								}
