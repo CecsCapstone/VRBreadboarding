@@ -5,39 +5,29 @@ using Leap;
 public class ClosestObjectFinder : MonoBehaviour {
 	public Controller controller;
 	public Frame frame;
+	public float threshhold = .05f;
+	public GameObject selected = null;
 	GameObject closest = null;
-	GameObject selected = null;
 
 	// Use this for initialization
 	void Start () {
 		controller = new Controller();
-
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 				frame = controller.Frame ();
-
 				Leap.Vector fingerPosition = frame.Hands.Rightmost.Fingers[1].TipPosition;
-
 				
 				if (fingerPosition.Magnitude != 0) 
 				{
 						HandController controllerGO = GetComponent<HandController>();
-						//Debug.Log (controllerGO.transform.position);
-						
 						float x = (fingerPosition.x/1000)+controllerGO.transform.position.x;
 						float y = (fingerPosition.y/1000)+controllerGO.transform.position.y;
 						float z = -(fingerPosition.z/1000)+controllerGO.transform.position.z;
-						
-
 						Vector3 position = new Vector3 (x, y, z);
-						Debug.Log (position);
-						Collider[] close_things = Physics.OverlapSphere (position, .5f, -1);
-						//Debug.Log("go: " + go[0].transform.position);
-		
+						Collider[] close_things = Physics.OverlapSphere (position, .1f, -1);
 						float closestDistance = Mathf.Infinity;
-					
 						for (int j = 0; j < close_things.Length; ++j) {
 								//Debug.Log ("Cube " + close_things [0].transform.position);
 								if (close_things [j] != null && close_things[j].tag == "GrabbableObject") 
@@ -51,24 +41,46 @@ public class ClosestObjectFinder : MonoBehaviour {
 									}
 								}
 						}
-						if (Vector3.Distance(closest.transform.position, position) < 0.1f) {
-								Debug.Log (closest.name.ToString ());
-								Light light = closest.light;
-                                light.color = UnityEngine.Color.red;
-								light.intensity = 2;
-								if (GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching()) {
-									selected = closest;
-									selected.light.color = UnityEngine.Color.green;
-								} else if(selected != null && selected.light.color != UnityEngine.Color.red) {
-									selected = null;
-									light.intensity = 0;
-								}
-						} else if(selected != null && closest.light.color != UnityEngine.Color.green) {
-								closest.light.intensity = 0;
-						}
-					
+						if(closest != null)
+							HandleLights(closest, position);
 				}
 		}
 
-
+		void HandleLights(GameObject closest, Vector3 position)
+		{
+			if (selected == null && Vector3.Distance(closest.transform.position, position) < threshhold) {
+				closest.GetComponent<SelectedObject>().TurnOnLight();
+				if (GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching()) {
+					// Find all other grabbable objects that are and turn off their lights
+					GameObject[] grabbableObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
+					for (int i = 0; i < grabbableObjects.Length; i++)
+					{
+						grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
+					}
+					
+					// Turn on selected object light
+					selected = closest;
+					closest.GetComponent<SelectedObject>().Select();
+				}
+			}
+			else if (selected == null && Vector3.Distance(closest.transform.position, position) >= threshhold)
+			{
+				GameObject[] grabbableObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
+				for (int i = 0; i < grabbableObjects.Length; i++)
+				{
+					grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
+				}
+			}
+			else if(selected != null && Vector3.Distance(closest.transform.position, position) >= threshhold && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching())
+			{
+				selected.GetComponent<SelectedObject>().Deselect();
+				selected = null;
+			}
+			else if(selected != null && Vector3.Distance(closest.transform.position, position) < threshhold && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching())
+			{
+				selected.GetComponent<SelectedObject>().Deselect();
+				selected = closest;
+				selected.GetComponent<SelectedObject>().Select();
+			}
+		}
 }
