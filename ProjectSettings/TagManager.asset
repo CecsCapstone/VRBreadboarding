@@ -41,3 +41,7 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Graphics
+    userID: 2
+    uniqueID: 2680573187
+    locked: 0
