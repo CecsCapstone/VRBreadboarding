@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Leap;
+using System.Collections.Generic;
 
 public class ClosestObjectFinder : MonoBehaviour {
 	public Controller controller;
@@ -26,9 +27,10 @@ public class ClosestObjectFinder : MonoBehaviour {
 						float y = (fingerPosition.y/1000)+controllerGO.transform.position.y;
 						float z = -(fingerPosition.z/1000)+controllerGO.transform.position.z;
 						Vector3 position = new Vector3 (x, y, z);
-						Collider[] close_things = Physics.OverlapSphere (position, .1f, -1);
+						List<Collider> close_things = new List<Collider>(Physics.OverlapSphere (position, .1f, -1));
+                        close_things.RemoveAll(col => col.name.StartsWith("bone"));
 						float closestDistance = Mathf.Infinity;
-						for (int j = 0; j < close_things.Length; ++j) {
+						for (int j = 0; j < close_things.Count; ++j) {
 								//Debug.Log ("Cube " + close_things [0].transform.position);
 								if (close_things [j] != null && close_things[j].tag == "GrabbableObject") 
 								{

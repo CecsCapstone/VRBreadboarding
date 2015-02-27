@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class TargetController : MonoBehaviour {
 	public Light light;
 	GameObject controller;
     GameObject gameInstantiated;
 	GameObject instantiated;
+    List<GameObject> connectors;
 
 	// Use this for initialization
 	void Start () 
@@ -54,6 +55,7 @@ public class TargetController : MonoBehaviour {
                     }
                     else
                     {
+                        //connectors.add(new)
                         if (connector.start == null)
                         {
                             connector.start = this;
