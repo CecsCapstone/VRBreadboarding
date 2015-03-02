@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 
 public class TargetController : MonoBehaviour {
-	public Light light;
+
+    public Light light;
+    public GameObject wirePrefab;
 	GameObject controller;
     GameObject gameInstantiated;
 	GameObject instantiated;
-    List<GameObject> connectors;
+    List<Connector> connectors;
+    int connectorIndex = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -39,7 +42,7 @@ public class TargetController : MonoBehaviour {
 				selected = controller.GetComponent<ClosestObjectFinder>().selected;
                 if (selected != null)
                 {
-                    ConnectorController connector = selected.GetComponent<ConnectorController>();
+                    Connector connector = selected.GetComponent<Connector>();
                     if (connector == null)
                     {
                         if (selected != null && instantiated == null)
@@ -53,18 +56,21 @@ public class TargetController : MonoBehaviour {
                             instantiated = PlaceObject(selected);
                         }
                     }
-                    else
+                    /*else
                     {
-                        //connectors.add(new)
-                        if (connector.start == null)
+                        Connector newConnector = connector;
+                        connectors.Add(Instantiate(newConnector, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as Connector);
+                        if (connectors[connectorIndex].start == null)
                         {
-                            connector.start = this;
+                            connectors[connectorIndex].start = this;
                         }
-                        else if (connector.end == null && this != connector.start)
+                        else if (connectors[connectorIndex].end == null && this != connectors[connectorIndex].start)
                         {
-                            connector.end = this;
+                            connectors[connectorIndex].end = this;
+                            connectors[connectorIndex].PlaceWire(wirePrefab);
+                            connectorIndex++;
                         }
-                    }
+                    }*/
                 }
 			}
 		}
