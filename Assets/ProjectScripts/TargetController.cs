@@ -8,6 +8,7 @@ public class TargetController : MonoBehaviour {
 	GameObject controller;
     GameObject gameInstantiated;
 	GameObject instantiated;
+    ConnectorController connectorController;
     List<Connector> connectors;
     int connectorIndex = 0;
 
@@ -42,7 +43,7 @@ public class TargetController : MonoBehaviour {
 				selected = controller.GetComponent<ClosestObjectFinder>().selected;
                 if (selected != null)
                 {
-                    Connector connector = selected.GetComponent<Connector>();
+                    ConnectorController connector = selected.GetComponent<ConnectorController>();
                     if (connector == null)
                     {
                         if (selected != null && instantiated == null)
@@ -56,9 +57,9 @@ public class TargetController : MonoBehaviour {
                             instantiated = PlaceObject(selected);
                         }
                     }
-                    /*else
+                    else
                     {
-                        Connector newConnector = connector;
+                        /*Connector newConnector = connector;
                         connectors.Add(Instantiate(newConnector, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as Connector);
                         if (connectors[connectorIndex].start == null)
                         {
@@ -69,8 +70,19 @@ public class TargetController : MonoBehaviour {
                             connectors[connectorIndex].end = this;
                             connectors[connectorIndex].PlaceWire(wirePrefab);
                             connectorIndex++;
+                        }*/
+                        if (connectorController.start == null)
+                        {
+                            connectorController.start = this;
                         }
-                    }*/
+                        else if (connectorController.end == null && this != connectorController.start)
+                        {
+                            connectorController.end = this;
+                            Connector newConnector = connectorController.PlaceWire(wirePrefab);
+                            connectors.Add(newConnector);
+                            connectorIndex++;
+                        }
+                    }
                 }
 			}
 		}
