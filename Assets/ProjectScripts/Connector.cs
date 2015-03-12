@@ -6,8 +6,6 @@ public class Connector : MonoBehaviour {
     public TargetController start;
     public TargetController end;
 
-    public Connector() { return; }
-
 	// Use this for initialization
 	void Start () {
 	

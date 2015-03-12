@@ -47,7 +47,7 @@ public class TargetController : MonoBehaviour {
                     {
                         if (selected != null && instantiated == null)
                         {
-                            light.intensity = 1;
+                            //light.intensity = 1;
                             instantiated = PlaceObject(selected);
                         }
                         else if (selected != null && selected.name != instantiated.name)
@@ -64,6 +64,11 @@ public class TargetController : MonoBehaviour {
                         }
                         else if (connectorController.end == null && this != connectorController.start)
                         {
+                            if ((connectorController.start.transform.position - this.transform.position).x != 0 && (connectorController.start.transform.position - this.transform.position).z != 0)
+                            {
+                                return;
+                            }
+
                             connectorController.end = this;
                             Connector newConnector = connectorController.PlaceWire();
                             connectors.Add(newConnector);
