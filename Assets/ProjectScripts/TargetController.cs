@@ -4,11 +4,9 @@ using System.Collections.Generic;
 public class TargetController : MonoBehaviour {
 
     public Light light;
-    public GameObject wirePrefab;
 	GameObject controller;
     GameObject gameInstantiated;
 	GameObject instantiated;
-    ConnectorController connectorController;
     List<Connector> connectors;
     int connectorIndex = 0;
 
@@ -17,6 +15,7 @@ public class TargetController : MonoBehaviour {
 	{
 		light = GetComponent<Light> ();
 		controller = GameObject.FindGameObjectWithTag ("HandController");
+        connectors = new List<Connector>();
 	}
 
     GameObject PlaceObject(GameObject placingObject)
@@ -43,8 +42,8 @@ public class TargetController : MonoBehaviour {
 				selected = controller.GetComponent<ClosestObjectFinder>().selected;
                 if (selected != null)
                 {
-                    ConnectorController connector = selected.GetComponent<ConnectorController>();
-                    if (connector == null)
+                    ConnectorController connectorController = selected.GetComponent<ConnectorController>();
+                    if (connectorController == null)
                     {
                         if (selected != null && instantiated == null)
                         {
@@ -59,18 +58,6 @@ public class TargetController : MonoBehaviour {
                     }
                     else
                     {
-                        /*Connector newConnector = connector;
-                        connectors.Add(Instantiate(newConnector, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as Connector);
-                        if (connectors[connectorIndex].start == null)
-                        {
-                            connectors[connectorIndex].start = this;
-                        }
-                        else if (connectors[connectorIndex].end == null && this != connectors[connectorIndex].start)
-                        {
-                            connectors[connectorIndex].end = this;
-                            connectors[connectorIndex].PlaceWire(wirePrefab);
-                            connectorIndex++;
-                        }*/
                         if (connectorController.start == null)
                         {
                             connectorController.start = this;
@@ -78,7 +65,7 @@ public class TargetController : MonoBehaviour {
                         else if (connectorController.end == null && this != connectorController.start)
                         {
                             connectorController.end = this;
-                            Connector newConnector = connectorController.PlaceWire(wirePrefab);
+                            Connector newConnector = connectorController.PlaceWire();
                             connectors.Add(newConnector);
                             connectorIndex++;
                         }
