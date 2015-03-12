@@ -16,73 +16,82 @@ public class ClosestObjectFinder : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-				frame = controller.Frame ();
-				Leap.Vector fingerPosition = frame.Hands.Rightmost.Fingers[1].TipPosition;
-				
-				if (fingerPosition.Magnitude != 0) 
-				{
-						HandController controllerGO = GetComponent<HandController>();
-						float x = (fingerPosition.x/1000)+controllerGO.transform.position.x;
-						float y = (fingerPosition.y/1000)+controllerGO.transform.position.y;
-						float z = -(fingerPosition.z/1000)+controllerGO.transform.position.z;
-						Vector3 position = new Vector3 (x, y, z);
-						List<Collider> close_things = new List<Collider>(Physics.OverlapSphere (position, .1f, -1));
-                        close_things.RemoveAll(col => col.name.StartsWith("bone"));
-						float closestDistance = Mathf.Infinity;
-						for (int j = 0; j < close_things.Count; ++j) {
-								//Debug.Log ("Cube " + close_things [0].transform.position);
-								if (close_things [j] != null && close_things[j].tag == "GrabbableObject") 
-								{
-									float dist = Vector3.Distance (position, close_things [j].transform.position);
-									//Debug.Log ("Cube " + close_things [0].transform.position);
-									if (closestDistance > dist) 
-									{
-										closest = close_things [j].gameObject;
-										closestDistance = dist;
-									}
-								}
-						}
-						if(closest != null)
-							HandleLights(closest, position);
-				}
-		}
-
-		void HandleLights(GameObject closest, Vector3 position)
+	void FixedUpdate () 
+    {
+		frame = controller.Frame ();
+		Leap.Vector fingerPosition = frame.Hands.Rightmost.Fingers[1].TipPosition;
+		
+		if (fingerPosition.Magnitude != 0) 
 		{
-			if (selected == null && Vector3.Distance(closest.transform.position, position) < threshhold) {
-				closest.GetComponent<SelectedObject>().TurnOnLight();
-				if (GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching()) {
-					// Find all other grabbable objects that are and turn off their lights
-					GameObject[] grabbableObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
-					for (int i = 0; i < grabbableObjects.Length; i++)
-					{
-						grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
-					}
-					
-					// Turn on selected object light
-					selected = closest;
-					closest.GetComponent<SelectedObject>().Select();
-				}
-			}
-			else if (selected == null && Vector3.Distance(closest.transform.position, position) >= threshhold)
-			{
-				GameObject[] grabbableObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
-				for (int i = 0; i < grabbableObjects.Length; i++)
+			HandController controllerGO = GetComponent<HandController>();
+
+			float x = (fingerPosition.x/1000)+controllerGO.transform.position.x;
+			float y = (fingerPosition.y/1000)+controllerGO.transform.position.y;
+			float z = -(fingerPosition.z/1000)+controllerGO.transform.position.z;
+
+			Vector3 position = new Vector3 (x, y, z);
+			List<Collider> close_things = new List<Collider>(Physics.OverlapSphere (position, .1f, -1));
+
+            close_things.RemoveAll(col => col.name.StartsWith("bone"));
+			float closestDistance = Mathf.Infinity;
+			for (int j = 0; j < close_things.Count; ++j) 
+            {
+				//Debug.Log ("Cube " + close_things [0].transform.position);
+				if (close_things [j] != null && close_things[j].tag == "GrabbableObject") 
 				{
-					grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
+					float dist = Vector3.Distance (position, close_things [j].transform.position);
+					//Debug.Log ("Cube " + close_things [0].transform.position);
+					if (closestDistance > dist) 
+					{
+						closest = close_things [j].gameObject;
+						closestDistance = dist;
+					}
 				}
 			}
-			else if(selected != null && Vector3.Distance(closest.transform.position, position) >= threshhold && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching())
-			{
-				selected.GetComponent<SelectedObject>().Deselect();
-				selected = null;
-			}
-			else if(selected != null && Vector3.Distance(closest.transform.position, position) < threshhold && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching())
-			{
-				selected.GetComponent<SelectedObject>().Deselect();
+			if(closest != null)
+            { 
+                SelectMaybe(closest, position);
+            }    
+        }
+	}
+
+	void SelectMaybe(GameObject closest, Vector3 position)
+	{
+		if (selected == null && Vector3.Distance(closest.transform.position, position) < threshhold) 
+        {
+			closest.GetComponent<SelectedObject>().TurnOnLight();
+			if (GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching()) 
+            {
+                HandleLights();
+				// Turn on selected object light
 				selected = closest;
-				selected.GetComponent<SelectedObject>().Select();
+				closest.GetComponent<SelectedObject>().Select();
 			}
 		}
+		else if (selected == null && Vector3.Distance(closest.transform.position, position) >= threshhold)
+		{
+               HandleLights();
+		}
+		else if(selected != null && Vector3.Distance(closest.transform.position, position) >= threshhold && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching())
+		{
+			selected.GetComponent<SelectedObject>().Deselect();
+			selected = null;
+		}
+		else if(selected != null && Vector3.Distance(closest.transform.position, position) < threshhold && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching())
+		{
+			selected.GetComponent<SelectedObject>().Deselect();
+			selected = closest;
+			selected.GetComponent<SelectedObject>().Select();
+		}
+	}
+
+    private void HandleLights()
+    {
+        // Find all other grabbable objects that are and turn off their lights
+        GameObject[] grabbableObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
+        for (int i = 0; i < grabbableObjects.Length; i++)
+        {
+            grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
+        }
+    }
 }
