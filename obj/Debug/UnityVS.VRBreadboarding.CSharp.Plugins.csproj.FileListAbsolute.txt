@@ -22,3 +22,15 @@ C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBread
 C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBreadboarding\obj\Debug\UnityVS.VRBreadboarding.CSharp.Plugins.csprojResolveAssemblyReference.cache
 C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\LeapCSharp.NET3.5.dll
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\obj\Debug\UnityVS.VRBreadboarding.CSharp.Plugins.csprojResolveAssemblyReference.cache
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Robert Cook\CECS 596\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.pdb

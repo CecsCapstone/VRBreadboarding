@@ -10,10 +10,6 @@ public class ConnectorController : MonoBehaviour {
     const float wireScaleX = .05f;
     const float wireScaleY = .1f;
     const float wireScaleZ = .05f;
-    
-    public ConnectorController()
-    {
-    }
 
 	// Use this for initialization
 	public Connector PlaceWire()

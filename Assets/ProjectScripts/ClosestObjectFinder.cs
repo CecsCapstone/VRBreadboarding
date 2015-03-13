@@ -37,7 +37,8 @@ public class ClosestObjectFinder : MonoBehaviour {
 			for (int j = 0; j < close_things.Count; ++j) 
             {
 				//Debug.Log ("Cube " + close_things [0].transform.position);
-				if (close_things [j] != null && close_things[j].tag == "GrabbableObject") 
+                Connector connector = close_things[j].GetComponent<Connector>();
+				if (close_things [j] != null && close_things[j].tag == "GrabbableObject" && connector == null) 
 				{
 					float dist = Vector3.Distance (position, close_things [j].transform.position);
 					//Debug.Log ("Cube " + close_things [0].transform.position);
