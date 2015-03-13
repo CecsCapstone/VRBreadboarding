@@ -5,7 +5,7 @@ using Leap;
 public class IsPinching : MonoBehaviour {
     public float grabTriggerDistance = 0.7f;
 
-    public bool Pinching()
+    public bool Pinching(int fingerNum)
     {
         HandModel hand_model = GetComponent<HandModel>();
         Hand leap_hand = hand_model.GetLeapHand();
@@ -15,7 +15,7 @@ public class IsPinching : MonoBehaviour {
 
         // Check thumb trip distance to joints on all other fingers.
         // If it's close enough, you're pinching.
-        Finger finger = leap_hand.Fingers[1];
+        Finger finger = leap_hand.Fingers[fingerNum];
 
         for (int j = 0; j < FingerModel.NUM_BONES; ++j)
         {
