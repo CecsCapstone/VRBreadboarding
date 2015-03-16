@@ -20,7 +20,6 @@ public class TargetSelectController : MonoBehaviour {
     {
         closestObject = finder.ClosestTarget();
         GameObject selected = null;
-        //Debug.Log(closestObject.GetComponent<TargetController>());
         if (GameObject.FindGameObjectWithTag("HandModel")!= null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(2) && closestObject != null && closestObject.GetComponent<TargetController>() != null)
         {
             selected = finder.selected;
@@ -32,7 +31,6 @@ public class TargetSelectController : MonoBehaviour {
                 {
                     if (selected != null && currentTarget.instantiated == null)
                     {
-                        //light.intensity = 1;
                         currentTarget.instantiated = currentTarget.PlaceObject(selected);
                     }
                     else if (selected != null && selected.name != currentTarget.instantiated.name)
@@ -43,12 +41,7 @@ public class TargetSelectController : MonoBehaviour {
                 }
                 else
                 {
-                    if (connectorController.start != null && GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(3))
-                    {
-                        Debug.Log("Dongs are fun");
-                        connectorController.Reset();
-                    }
-                    else if (!waiting)
+                    if (!waiting)
                     {
                         if (connectorController.start == null)
                         {
