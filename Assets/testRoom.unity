@@ -1052,6 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabTriggerDistance: .699999988
+  grabTriggerDistanceRing: 1
 --- !u!1 &383006908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1631,14 @@ Prefab:
     - target: {fileID: 100000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
       propertyPath: m_TagString
       value: HandController
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
+      propertyPath: handMovementScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
+      propertyPath: mirrorZAxis
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9f2277f2b4414ff9abf05e783890171, type: 2}
@@ -2250,6 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bce3fdb9924c8b4f82842015f163fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitingTime: .5
 --- !u!1 &1100551425
 GameObject:
   m_ObjectHideFlags: 0

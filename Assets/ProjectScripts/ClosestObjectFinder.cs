@@ -106,6 +106,10 @@ public class ClosestObjectFinder : MonoBehaviour {
         {
             selected.GetComponent<SelectedObject>().Deselect();
             GetComponent<HandController>().GetComponent<TargetSelectController>().enabled = false;
+            if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
+            {
+                selected.GetComponent<ConnectorController>().Reset();
+            }
             selected = null;
         }
 	}
@@ -129,7 +133,11 @@ public class ClosestObjectFinder : MonoBehaviour {
 		}
         else if (selected != null && Vector3.Distance(closest.transform.position, position) < threshhold && handModel != null && handModel.GetComponent<IsPinching>().Pinching(1))
 		{
-			selected.GetComponent<SelectedObject>().Deselect();
+            selected.GetComponent<SelectedObject>().Deselect();
+            if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
+            {
+                selected.GetComponent<ConnectorController>().Reset();
+            }
             Select(closest);
 		}
 	}
