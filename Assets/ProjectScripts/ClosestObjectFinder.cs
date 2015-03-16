@@ -19,18 +19,30 @@ public class ClosestObjectFinder : MonoBehaviour {
 
     public GameObject ClosestItem()
     {
+        frame = controller.Frame();
+        Leap.Vector fingerPosition = frame.Hands.Rightmost.Fingers[1].TipPosition;
+        HandController controllerGO = GetComponent<HandController>();
+
+        float x = (fingerPosition.x / 1000) + controllerGO.transform.position.x;
+        float y = (fingerPosition.y / 1000) + controllerGO.transform.position.y;
+        float z = -(fingerPosition.z / 1000) + controllerGO.transform.position.z;
+
+        position = new Vector3(x, y, z);
         List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position, .1f, -1));
 
-        close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null);
+        close_things.RemoveAll(col => col.name.StartsWith("bone"));
         float closestDistance = Mathf.Infinity;
-        foreach(var item in close_things)
+        for (int j = 0; j < close_things.Count; ++j)
         {
-            if (item != null && item.tag == "GrabbableObject")
+            //Debug.Log ("Cube " + close_things [0].transform.position);
+            Connector connector = close_things[j].GetComponent<Connector>();
+            if (close_things[j] != null && close_things[j].tag == "GrabbableObject" && connector == null)
             {
-                float dist = Vector3.Distance(position, item.transform.position);
+                float dist = Vector3.Distance(position, close_things[j].transform.position);
+                //Debug.Log ("Cube " + close_things [0].transform.position);
                 if (closestDistance > dist)
                 {
-                    closest = item.gameObject;
+                    closest = close_things[j].gameObject;
                     closestDistance = dist;
                 }
             }
@@ -40,18 +52,30 @@ public class ClosestObjectFinder : MonoBehaviour {
 
     public GameObject ClosestTarget()
     {
+        //frame = controller.Frame();
+        //Leap.Vector fingerPosition = frame.Hands.Rightmost.Fingers[1].TipPosition;
+        //HandController controllerGO = GetComponent<HandController>();
+
+        //float x = (fingerPosition.x / 1000) + controllerGO.transform.position.x;
+        //float y = (fingerPosition.y / 1000) + controllerGO.transform.position.y;
+        //float z = -(fingerPosition.z / 1000) + controllerGO.transform.position.z;
+
+        //position = new Vector3(x, y, z);
         List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position, .1f, -1));
 
-        close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null);
+        close_things.RemoveAll(col => col.name.StartsWith("bone"));
         float closestDistance = Mathf.Infinity;
-        foreach(var item in close_things)
+        for (int j = 0; j < close_things.Count; ++j)
         {
-            if (item != null && item.tag == "Target")
+            //Debug.Log ("Cube " + close_things [0].transform.position);
+            Connector connector = close_things[j].GetComponent<Connector>();
+            if (close_things[j] != null && close_things[j].tag == "Target" && connector == null)
             {
-                float dist = Vector3.Distance(position, item.transform.position);
+                float dist = Vector3.Distance(position, close_things[j].transform.position);
+                //Debug.Log ("Cube " + close_things [0].transform.position);
                 if (closestDistance > dist)
                 {
-                    closest = item.gameObject;
+                    closest = close_things[j].gameObject;
                     closestDistance = dist;
                 }
             }
@@ -62,7 +86,15 @@ public class ClosestObjectFinder : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
     {
-        position = GetTipPosition();
+        frame = controller.Frame();
+        Leap.Vector fingerPosition = frame.Hands.Rightmost.Fingers[1].TipPosition;
+        HandController controllerGO = GetComponent<HandController>();
+
+        float x = (fingerPosition.x / 1000) + controllerGO.transform.position.x;
+        float y = (fingerPosition.y / 1000) + controllerGO.transform.position.y;
+        float z = -(fingerPosition.z / 1000) + controllerGO.transform.position.z;
+
+        position = new Vector3(x, y, z);
 
         closest = ClosestItem();
 		if(closest != null && closest.GetComponent<SelectedObject>() != null)
@@ -117,16 +149,5 @@ public class ClosestObjectFinder : MonoBehaviour {
         {
             grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
         }
-    }
-
-    private Vector3 GetTipPosition()
-    {
-        frame = controller.Frame();
-        Leap.Vector fingerposition = frame.Hands.Rightmost.Fingers[1].TipPosition;
-        HandController controllerGO = GetComponent<HandController>();
-
-        Vector3 local_tip = fingerposition.ToUnityScaled();
-
-        return controllerGO.transform.TransformPoint(local_tip);
     }
 }
