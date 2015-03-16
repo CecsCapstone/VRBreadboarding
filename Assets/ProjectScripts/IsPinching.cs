@@ -4,6 +4,7 @@ using Leap;
 
 public class IsPinching : MonoBehaviour {
     public float grabTriggerDistance = 0.7f;
+    public float grabTriggerDistanceRing = 1f;
 
     public bool Pinching(int fingerNum)
     {
@@ -27,7 +28,7 @@ public class IsPinching : MonoBehaviour {
 
         // Scale trigger distance by thumb proximal bone length.
         float proximal_length = leap_hand.Fingers[0].Bone(Bone.BoneType.TYPE_PROXIMAL).Length;
-        float trigger_distance = proximal_length * grabTriggerDistance;
+        float trigger_distance = proximal_length * (fingerNum > 2 ? grabTriggerDistanceRing : grabTriggerDistance);
 
         if (closest_distance <= trigger_distance)
         {

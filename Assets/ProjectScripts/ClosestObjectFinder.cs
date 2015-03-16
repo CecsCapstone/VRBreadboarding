@@ -15,6 +15,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		controller = new Controller();
+        controller.EnableGesture(Gesture.GestureType.TYPESWIPE);
 	}
 
     public GameObject ClosestItem()
@@ -62,6 +63,14 @@ public class ClosestObjectFinder : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
     {
+        frame = controller.Frame();
+        Debug.Log(frame.Gestures().Count);
+        if (frame.Gestures().Count > 0 && selected != null && selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
+        {
+            selected.GetComponent<ConnectorController>().Reset();
+        }
+
+
         position = GetTipPosition();
 
         closest = ClosestItem();
@@ -74,6 +83,10 @@ public class ClosestObjectFinder : MonoBehaviour {
         {
             selected.GetComponent<SelectedObject>().Deselect();
             GetComponent<HandController>().GetComponent<TargetSelectController>().enabled = false;
+            if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
+            {
+                selected.GetComponent<ConnectorController>().Reset();
+            }
             selected = null;
         }
 	}
@@ -98,6 +111,10 @@ public class ClosestObjectFinder : MonoBehaviour {
         else if (selected != null && Vector3.Distance(closest.transform.position, position) < threshhold && handModel != null && handModel.GetComponent<IsPinching>().Pinching(1))
 		{
 			selected.GetComponent<SelectedObject>().Deselect();
+            if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
+            {
+                selected.GetComponent<ConnectorController>().Reset();
+            }
             Select(closest);
 		}
 	}

@@ -25,9 +25,20 @@ public class ConnectorController : MonoBehaviour {
         wire.start = this.start;
         wire.end = this.end;
 
-        this.start = null;
-        this.end = null;
+        Reset();
 
         return wire;
+    }
+
+    public void Reset()
+    {
+        this.start.GetComponent<Light>().intensity = 0;
+        this.start = null;
+
+        if (this.end != null)
+        {
+            this.end.GetComponent<Light>().intensity = 0;
+            this.end = null;
+        }
     }
 }
