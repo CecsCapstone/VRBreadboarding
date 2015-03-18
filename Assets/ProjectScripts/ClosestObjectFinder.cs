@@ -79,16 +79,16 @@ public class ClosestObjectFinder : MonoBehaviour {
             SelectMaybe(closest, position);
         }
 
-        if (selected != null && Vector3.Distance(closest.transform.position, position) >= threshhold && GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
-        {
-            selected.GetComponent<SelectedObject>().Deselect();
-            GetComponent<HandController>().GetComponent<TargetSelectController>().enabled = false;
-            if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
-            {
-                selected.GetComponent<ConnectorController>().Reset();
-            }
-            selected = null;
-        }
+        //if (selected != null && Vector3.Distance(closest.transform.position, position) >= threshhold && GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
+        //{
+        //    selected.GetComponent<SelectedObject>().Deselect();
+        //    GetComponent<HandController>().GetComponent<TargetSelectController>().enabled = false;
+        //    if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
+        //    {
+        //        selected.GetComponent<ConnectorController>().Reset();
+        //    }
+        //    selected = null;
+        //}
 	}
 
 	void SelectMaybe(GameObject closest, Vector3 position)
@@ -119,7 +119,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 		}
 	}
 
-    private void Select(GameObject closest)
+    public void Select(GameObject closest)
     {
         selected = closest;
         GetComponent<HandController>().GetComponent<TargetSelectController>().enabled = true;

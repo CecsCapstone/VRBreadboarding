@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 1744832502}
   m_GameObject: {fileID: 27590650}
   m_LocalRotation: {x: 2.23907168e-08, y: .858842313, z: -.512240171, w: -3.75411915e-08}
-  m_LocalPosition: {x: 0, y: 1.023, z: .352999985}
+  m_LocalPosition: {x: 0, y: .802999973, z: .114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 809353481}
@@ -247,8 +247,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 34509399}
   - 114: {fileID: 34509398}
+  - 114: {fileID: 34509400}
   m_Layer: 0
-  m_Name: A
+  m_Name: ResistorMenuItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,9 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 4
   Id: 
-  Label: A
+  Label: Resistor
   RelativeSize: 1
   IsVisible: 1
   IsEnabled: 1
@@ -292,6 +293,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 955937213}
   m_RootOrder: 0
+--- !u!114 &34509400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34509397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a043e23741ded45b42c9e0706b60be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &69932287
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +543,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 172356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
+      propertyPath: m_TagString
+      value: ConnectorObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
   m_RootGameObject: {fileID: 2146428429}
@@ -765,7 +781,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 180676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
       propertyPath: m_TagString
-      value: GrabbableObject
+      value: ResistorObject
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11480676, guid: 393e6e1fb4715434390fe8d02e891298, type: 2}
@@ -1561,6 +1577,46 @@ Transform:
   - {fileID: 1265981802}
   m_Father: {fileID: 378377644}
   m_RootOrder: 5
+--- !u!1 &511578998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 511579000}
+  - 114: {fileID: 511578999}
+  m_Layer: 0
+  m_Name: TargetSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &511578999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511578998}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bce3fdb9924c8b4f82842015f163fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitingTime: 1
+--- !u!4 &511579000
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511578998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .144136071, y: .605457425, z: -.413727283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
 --- !u!1 &543748341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2438,6 @@ Transform:
   m_Children:
   - {fileID: 34509399}
   - {fileID: 1435732455}
-  - {fileID: 1541630895}
   m_Father: {fileID: 0}
   m_RootOrder: 18
 --- !u!114 &955937214
@@ -2841,7 +2896,7 @@ GameObject:
   - 114: {fileID: 1411214151}
   m_Layer: 0
   m_Name: Resistor
-  m_TagString: GrabbableObject
+  m_TagString: ResistorObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2956,8 +3011,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1435732455}
   - 114: {fileID: 1435732456}
+  - 114: {fileID: 1435732457}
   m_Layer: 0
-  m_Name: B
+  m_Name: ConnectorMenuItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2986,9 +3042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 4
   Id: 
-  Label: B
+  Label: Connector
   RelativeSize: 1
   IsVisible: 1
   IsEnabled: 1
@@ -3001,6 +3057,17 @@ MonoBehaviour:
   SliderRangeMax: 1
   SliderValue: 0
   SliderAllowJump: 1
+--- !u!114 &1435732457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435732454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac6fb86dbe36fc4ba6d3f1d5f72278d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1485043843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,60 +3199,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 1.29999995}
   m_Center: {x: 3.87430191e-06, y: 3.70576914e-22, z: -8.94069601e-08}
---- !u!1 &1541630894
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1541630895}
-  - 114: {fileID: 1541630896}
-  m_Layer: 0
-  m_Name: C
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1541630895
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541630894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 955937213}
-  m_RootOrder: 2
---- !u!114 &1541630896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541630894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 3
-  Id: 
-  Label: C
-  RelativeSize: 1
-  IsVisible: 1
-  IsEnabled: 1
-  NavigateBackUponSelect: 0
-  CheckboxValue: 1
-  RadioValue: 0
-  SliderTicks: 0
-  SliderSnaps: 0
-  SliderRangeMin: 0
-  SliderRangeMax: 1
-  SliderValue: 0
-  SliderAllowJump: 1
 --- !u!1 &1561250244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,11 +3522,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 3396c6816a092d647a68cbaade7c78bd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.023
+      value: .802999973
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 3396c6816a092d647a68cbaade7c78bd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .352999985
+      value: .114
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 3396c6816a092d647a68cbaade7c78bd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4662,7 +4675,7 @@ GameObject:
   - 114: {fileID: 2146428430}
   m_Layer: 0
   m_Name: ConnectorController
-  m_TagString: GrabbableObject
+  m_TagString: ConnectorObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
