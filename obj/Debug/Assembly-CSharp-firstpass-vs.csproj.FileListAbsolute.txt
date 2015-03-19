@@ -11,3 +11,16 @@ C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBread
 C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
 C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Parrrott\Documents\2015 Semesters\Spring 4 Semester\CECS 596-01\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\LeapCSharp.NET3.5.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Collin\GitHub\Github\Capstone\VRBreadboarding\obj\Debug\Assembly-CSharp-firstpass.pdb

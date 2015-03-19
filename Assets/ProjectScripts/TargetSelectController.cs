@@ -4,6 +4,7 @@ using System.Collections;
 public class TargetSelectController : MonoBehaviour {
 
     private TargetController currentTarget;
+    private TargetController previousTarget;
     private ClosestObjectFinder finder;
     private GameObject controller;
     private GameObject closestObject;
@@ -19,8 +20,23 @@ public class TargetSelectController : MonoBehaviour {
     private void FixedUpdate()
     {
         closestObject = finder.ClosestTarget();
+
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
+        for (int i = 0; i < targets.Length; i++)
+        {
+            if (targets[i] != closestObject && targets[i] != previousTarget)
+            {
+                targets[i].GetComponent<Light>().color = UnityEngine.Color.red;
+                targets[i].GetComponent<Light>().intensity = 0;
+            }
+        }
+        
+        if (closestObject != null && closestObject.GetComponent<TargetController>() != null)
+        {
+            closestObject.GetComponent<Light>().intensity = 2;
+        }
         GameObject selected = null;
-        if (GameObject.FindGameObjectWithTag("HandModel")!= null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(2) && closestObject != null && closestObject.GetComponent<TargetController>() != null)
+        if (GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1) && closestObject != null && closestObject.GetComponent<TargetController>() != null)
         {
             selected = finder.selected;
             currentTarget = closestObject.GetComponent<TargetController>();
@@ -46,6 +62,8 @@ public class TargetSelectController : MonoBehaviour {
                         if (connectorController.start == null)
                         {
                             connectorController.start = currentTarget;
+                            previousTarget = currentTarget;
+                            currentTarget.GetComponent<Light>().color = UnityEngine.Color.green;
                             currentTarget.GetComponent<Light>().intensity = 2;
                         }
                         else if (connectorController.end == null && currentTarget != connectorController.start)
@@ -84,6 +102,7 @@ public class TargetSelectController : MonoBehaviour {
                                 newConnector.start.connectorIndex++;
                                 newConnector.start.GetComponent<Light>().intensity = 0;
                                 newConnector.end.GetComponent<Light>().intensity = 0;
+                                previousTarget = null;
                                 waiting = true;
                             }
                         }

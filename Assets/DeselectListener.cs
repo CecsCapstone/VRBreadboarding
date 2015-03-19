@@ -23,7 +23,6 @@ public class DeselectListener : HovercastNavItemListener<NavItemRadio>
         {
             return;
         }
-        Debug.Log(pNavItem);
 
         if (finder.selected != null)
         {

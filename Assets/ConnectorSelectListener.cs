@@ -25,7 +25,6 @@ public class ConnectorSelectListener : HovercastNavItemListener<NavItemRadio>
             connector.GetComponent<SelectedObject>().Deselect();
             return;
         }
-        Debug.Log(pNavItem);
         controller.GetComponent<ClosestObjectFinder>().Select(connector);
         //GameObject.FindObjectOfType<TargetSelectController>().enabled = true;
         //connector.GetComponent<SelectedObject>().Select();

@@ -64,7 +64,6 @@ public class ClosestObjectFinder : MonoBehaviour {
 	void FixedUpdate () 
     {
         frame = controller.Frame();
-        Debug.Log(frame.Gestures().Count);
         if (frame.Gestures().Count > 0 && selected != null && selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
         {
             selected.GetComponent<ConnectorController>().Reset();
