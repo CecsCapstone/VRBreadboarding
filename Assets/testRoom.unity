@@ -1303,7 +1303,7 @@ GameObject:
   - 23: {fileID: 383006909}
   m_Layer: 0
   m_Name: Chair
-  m_TagString: Untagged
+  m_TagString: nonCloseThings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1701,6 +1701,10 @@ Prefab:
     - target: {fileID: 400000, guid: 83a8ea92913740449a4ad6c6c19c7d92, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 83a8ea92913740449a4ad6c6c19c7d92, type: 3}
+      propertyPath: m_TagString
+      value: nonCloseThings
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83a8ea92913740449a4ad6c6c19c7d92, type: 3}
@@ -3880,6 +3884,10 @@ Prefab:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ecdfe9f0b8508af4d92737c656e36132, type: 3}
+      propertyPath: m_TagString
+      value: nonCloseThings
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecdfe9f0b8508af4d92737c656e36132, type: 3}
   m_RootGameObject: {fileID: 1910426926}
@@ -3928,7 +3936,7 @@ GameObject:
   - 64: {fileID: 1910426930}
   m_Layer: 0
   m_Name: Desk
-  m_TagString: Untagged
+  m_TagString: nonCloseThings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

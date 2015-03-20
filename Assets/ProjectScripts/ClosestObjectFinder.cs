@@ -37,24 +37,31 @@ public class ClosestObjectFinder : MonoBehaviour {
         return closest;
     }
 
-    public GameObject ClosestTarget()
+    public TargetController ClosestTarget()
     {
         List<Collider> close_things = getUsefulCloseThings();
+		if(close_things!=null)
+		{	
+			GameObject closestTarget = null;
+			float closestDistance = Mathf.Infinity;
+			foreach(var item in close_things)
+			{
+			    if (item != null && item.tag == "Target")
+			    {
+			        float dist = Vector3.Distance(position, item.transform.position);
+			        if (closestDistance > dist)
+			        {
+			            closestTarget = item.gameObject;
+			            closestDistance = dist;
+			        }
+			    }
+			}
+			if(closestTarget == null)
+				return null;
 
-        float closestDistance = Mathf.Infinity;
-        foreach(var item in close_things)
-        {
-            if (item != null && item.tag == "Target")
-            {
-                float dist = Vector3.Distance(position, item.transform.position);
-                if (closestDistance > dist)
-                {
-                    closest = item.gameObject;
-                    closestDistance = dist;
-                }
-            }
-        }
-        return closest;
+			return closestTarget.GetComponent<TargetController>();
+		}
+		return null;
     }
 	
 	// Update is called once per frame

@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TargetSelectController : MonoBehaviour {
 
     private TargetController currentTarget;
-    private TargetController previousTarget;
+    private TargetController FirstTarget;
+	private TargetController hovering;
+	private TargetController closestTarget;
     private ClosestObjectFinder finder;
     private GameObject controller;
-    private GameObject closestObject;
     private bool waiting = false;
     public float waitingTime = 1f;
 
@@ -19,27 +21,34 @@ public class TargetSelectController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        closestObject = finder.ClosestTarget();
+		closestTarget = finder.ClosestTarget();
 
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
-        for (int i = 0; i < targets.Length; i++)
-        {
-            if (targets[i] != closestObject && targets[i] != previousTarget)
-            {
-                targets[i].GetComponent<Light>().color = UnityEngine.Color.red;
-                targets[i].GetComponent<Light>().intensity = 0;
-            }
-        }
-        
-        if (closestObject != null && closestObject.GetComponent<TargetController>() != null)
-        {
-            closestObject.GetComponent<Light>().intensity = 2;
-        }
+		if(closestTarget != null && hovering == null)
+		{
+			SetHover(closestTarget);
+		}
+
+		else if(closestTarget == null && hovering != null)
+		{
+			RemoveHover();
+			return;
+		}
+
+		else if(closestTarget != hovering)
+		{
+			if(hovering !=null)	
+			{
+				RemoveHover();
+			}
+
+			SetHover(closestTarget);
+		}
+
         GameObject selected = null;
-        if (GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1) && closestObject != null && closestObject.GetComponent<TargetController>() != null)
+		if(GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1) && closestTarget != null)
         {
             selected = finder.selected;
-            currentTarget = closestObject.GetComponent<TargetController>();
+            currentTarget = closestTarget;
             if (selected != null)
             {
                 ConnectorController connectorController = selected.GetComponent<ConnectorController>();
@@ -61,10 +70,7 @@ public class TargetSelectController : MonoBehaviour {
                     {
                         if (connectorController.start == null)
                         {
-                            connectorController.start = currentTarget;
-                            previousTarget = currentTarget;
-                            currentTarget.GetComponent<Light>().color = UnityEngine.Color.green;
-                            currentTarget.GetComponent<Light>().intensity = 2;
+							SetFirstTarget(connectorController);
                         }
                         else if (connectorController.end == null && currentTarget != connectorController.start)
                         {
@@ -102,7 +108,7 @@ public class TargetSelectController : MonoBehaviour {
                                 newConnector.start.connectorIndex++;
                                 newConnector.start.GetComponent<Light>().intensity = 0;
                                 newConnector.end.GetComponent<Light>().intensity = 0;
-                                previousTarget = null;
+                                FirstTarget = null;
                                 waiting = true;
                             }
                         }
@@ -123,4 +129,32 @@ public class TargetSelectController : MonoBehaviour {
             }
         }
     }
+
+	private void SetHover(TargetController closestTarget)
+	{
+		//if(closestTarget.GetComponent<ConnectorController> ==
+		if(closestTarget == FirstTarget)
+			return;
+		hovering = closestTarget;
+		closestTarget.GetComponent<Light>().color = UnityEngine.Color.red;
+		closestTarget.GetComponent<Light>().intensity = 2;
+		Debug.Log(closestTarget.GetComponent<Light>().intensity);
+	}
+
+	private void RemoveHover()
+	{
+		if(closestTarget == FirstTarget)
+			return;
+		hovering.GetComponent<Light>().color = UnityEngine.Color.red;
+		hovering.GetComponent<Light>().intensity = 0;
+		hovering = null;
+	}
+
+	private void SetFirstTarget(ConnectorController connectorController)
+	{
+		connectorController.start = currentTarget;
+		FirstTarget = currentTarget;
+		currentTarget.GetComponent<Light>().color = UnityEngine.Color.green;
+		currentTarget.GetComponent<Light>().intensity = 2;
+	}
 }
