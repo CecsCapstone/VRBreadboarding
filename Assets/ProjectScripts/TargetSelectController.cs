@@ -133,28 +133,61 @@ public class TargetSelectController : MonoBehaviour {
 	private void SetHover(TargetController closestTarget)
 	{
 		//if(closestTarget.GetComponent<ConnectorController> ==
-		if(closestTarget == FirstTarget)
+		if(FirstTarget != null && closestTarget == FirstTarget)
 			return;
 		hovering = closestTarget;
-		closestTarget.GetComponent<Light>().color = UnityEngine.Color.red;
-		closestTarget.GetComponent<Light>().intensity = 2;
-		Debug.Log(closestTarget.GetComponent<Light>().intensity);
+		TurnOnLights(Color.red, hovering);
 	}
 
 	private void RemoveHover()
-	{
-		if(closestTarget == FirstTarget)
-			return;
-		hovering.GetComponent<Light>().color = UnityEngine.Color.red;
-		hovering.GetComponent<Light>().intensity = 0;
-		hovering = null;
+	{	
+		
+		if(FirstTarget != null)		//in connector select mode
+		{
+			if(hovering == FirstTarget)		//hover is set to the current selected target, do nothing
+			{
+				return;
+			}
+			if(closestTarget !=FirstTarget && hovering !=null)
+			{
+				TurnOffLights(hovering);
+				hovering = null;
+			}
+		}
+		
+		else  // no connector mode
+		{
+			if(closestTarget != null && closestTarget != hovering)
+			{
+				TurnOffLights(hovering);
+				hovering = closestTarget;
+				TurnOnLights(Color.red, hovering);
+			}
+			else 
+			{
+				TurnOffLights(hovering);
+				hovering = null;
+			}
+			
+		}
+		
 	}
 
 	private void SetFirstTarget(ConnectorController connectorController)
 	{
 		connectorController.start = currentTarget;
 		FirstTarget = currentTarget;
-		currentTarget.GetComponent<Light>().color = UnityEngine.Color.green;
-		currentTarget.GetComponent<Light>().intensity = 2;
+		TurnOnLights(Color.green, FirstTarget);
+	}
+
+	private void TurnOnLights(Color color,TargetController target)
+	{
+		target.GetComponent<Light>().color = color;
+		target.GetComponent<Light>().intensity = 2;
+	}
+
+	private void TurnOffLights(TargetController target)
+	{
+		target.GetComponent<Light>().intensity = 0;
 	}
 }
