@@ -21,7 +21,6 @@ public class ConnectorSelectListener : HovercastNavItemListener<NavItemRadio>
         GameObject controller = GameObject.FindGameObjectWithTag("HandController");
         if (!pNavItem.Value)
         {
-            GameObject.FindObjectOfType<TargetSelectController>().enabled = false;
             connector.GetComponent<SelectedObject>().Deselect();
             return;
         }

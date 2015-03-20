@@ -21,7 +21,6 @@ public class ResistorSelectListener : HovercastNavItemListener<NavItemRadio>
         GameObject controller = GameObject.FindGameObjectWithTag("HandController");
         if (!pNavItem.Value)
         {
-            GameObject.FindObjectOfType<TargetSelectController>().enabled = false;
             resistor.GetComponent<SelectedObject>().Deselect();
             return;
         }
