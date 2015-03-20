@@ -6,7 +6,7 @@ namespace Hovercast.Core.Navigation {
 	/*================================================================================================*/
 	public class HovercastNavProvider : MonoBehaviour { 
 
-		public string Title = "Hovercast VR";
+		public string Title = "VR Breadboarding";
 
 		private readonly NavRoot vRoot;
 		private NavLevel vRootLevel;

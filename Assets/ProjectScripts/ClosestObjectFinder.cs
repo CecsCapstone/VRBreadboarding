@@ -20,9 +20,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 
     public GameObject ClosestItem()
     {
-        List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position, .1f, -1));
-
-        close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null);
+		List<Collider> close_things = getUsefulCloseThings();
         float closestDistance = Mathf.Infinity;
         foreach(var item in close_things)
         {
@@ -41,9 +39,8 @@ public class ClosestObjectFinder : MonoBehaviour {
 
     public GameObject ClosestTarget()
     {
-        List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position, .1f, -1));
+        List<Collider> close_things = getUsefulCloseThings();
 
-        close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null);
         float closestDistance = Mathf.Infinity;
         foreach(var item in close_things)
         {
@@ -145,4 +142,12 @@ public class ClosestObjectFinder : MonoBehaviour {
 
         return controllerGO.transform.TransformPoint(local_tip);
     }
+
+	private List<Collider> getUsefulCloseThings() 
+	{
+		List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position,threshhold,-1));
+		close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null || col.name.StartsWith("palm")|| col.tag.Contains("nonCloseThings"));
+		return close_things;
+		
+	}
 }
