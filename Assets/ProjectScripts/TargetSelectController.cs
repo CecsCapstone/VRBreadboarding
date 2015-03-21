@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TargetSelectController : MonoBehaviour {
 
-    private TargetController currentTarget;
-    private TargetController previousTarget;
+    private TargetController closestTarget;
+    private TargetController FirstTarget;
+	private TargetController hovering;
     private ClosestObjectFinder finder;
     private GameObject controller;
-    private GameObject closestObject;
     private bool waiting = false;
     public float waitingTime = 1f;
 
@@ -19,40 +20,60 @@ public class TargetSelectController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        closestObject = finder.ClosestTarget();
+		closestTarget = finder.ClosestTarget();
+		
+		//if we aren't close to anything remove the hovering and return
+		if(closestTarget == null)
+		{
+			RemoveHover();
+			return;
+		}
+		
+		//connector select mode
+		else if (FirstTarget !=null) 
+		{
+			if(closestTarget == FirstTarget)
+			{
+				RemoveHover();
+			}
+			if(closestTarget != FirstTarget && closestTarget != hovering)
+			{
+				RemoveHover();
+				SetHover(closestTarget);
+			}
+		}
+		else 
+		{
+			if(hovering == null)
+			{
+				SetHover(closestTarget);
+			}
 
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
-        for (int i = 0; i < targets.Length; i++)
-        {
-            if (targets[i] != closestObject && targets[i] != previousTarget)
-            {
-                targets[i].GetComponent<Light>().color = UnityEngine.Color.red;
-                targets[i].GetComponent<Light>().intensity = 0;
-            }
-        }
-        
-        if (closestObject != null && closestObject.GetComponent<TargetController>() != null)
-        {
-            closestObject.GetComponent<Light>().intensity = 2;
-        }
+			else if(hovering != null && closestTarget != hovering)
+			{
+				RemoveHover();
+				SetHover(closestTarget);
+			}
+		}
+		
+
         GameObject selected = null;
-        if (GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1) && closestObject != null && closestObject.GetComponent<TargetController>() != null)
+		if(GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
         {
             selected = finder.selected;
-            currentTarget = closestObject.GetComponent<TargetController>();
             if (selected != null)
             {
                 ConnectorController connectorController = selected.GetComponent<ConnectorController>();
                 if (connectorController == null)
                 {
-                    if (selected != null && currentTarget.instantiated == null)
+                    if (closestTarget.instantiated == null)
                     {
-                        currentTarget.instantiated = currentTarget.PlaceObject(selected);
+                        closestTarget.instantiated = closestTarget.PlaceObject(selected);
                     }
-                    else if (selected != null && selected.name != currentTarget.instantiated.name)
+                    else if (selected.name != closestTarget.instantiated.name) //there is an object on the target, but you are trying to place something else
                     {
-                        Destroy(currentTarget.instantiated);
-                        currentTarget.instantiated = currentTarget.PlaceObject(selected);
+                        Destroy(closestTarget.instantiated);
+                        closestTarget.instantiated = closestTarget.PlaceObject(selected);
                     }
                 }
                 else
@@ -61,49 +82,19 @@ public class TargetSelectController : MonoBehaviour {
                     {
                         if (connectorController.start == null)
                         {
-                            connectorController.start = currentTarget;
-                            previousTarget = currentTarget;
-                            currentTarget.GetComponent<Light>().color = UnityEngine.Color.green;
-                            currentTarget.GetComponent<Light>().intensity = 2;
+							SetFirstTarget(connectorController);
                         }
-                        else if (connectorController.end == null && currentTarget != connectorController.start)
+                        else if (connectorController.end == null && closestTarget != connectorController.start)
                         {
-                            if ((connectorController.start.transform.position - currentTarget.transform.position).x != 0 && (connectorController.start.transform.position - currentTarget.transform.position).z != 0)
+							if(AttemptingDiagonal(connectorController, closestTarget))
                             {
                                 return;
                             }
-
-                            bool duplicate = false;
-                            foreach (Connector conn in currentTarget.connectors)
-                            {
-                                if (conn.start == currentTarget)
-                                {
-                                    if (conn.end == connectorController.start)
-                                    {
-                                        duplicate = true;
-                                    }
-                                }
-                                else if (conn.end == currentTarget)
-                                {
-                                    if (conn.start == connectorController.start)
-                                    {
-                                        duplicate = true;
-                                    }
-                                }
-                            }
-
+							bool duplicate = CheckDuplicates(connectorController,closestTarget);
                             if (!duplicate)
                             {
-                                connectorController.end = currentTarget;
-                                Connector newConnector = connectorController.PlaceWire();
-                                currentTarget.connectors.Add(newConnector);
-                                newConnector.start.connectors.Add(newConnector);
-                                currentTarget.connectorIndex++;
-                                newConnector.start.connectorIndex++;
-                                newConnector.start.GetComponent<Light>().intensity = 0;
-                                newConnector.end.GetComponent<Light>().intensity = 0;
-                                previousTarget = null;
-                                waiting = true;
+								PlaceWire(connectorController, closestTarget );
+                                
                             }
                         }
                     }
@@ -123,4 +114,74 @@ public class TargetSelectController : MonoBehaviour {
             }
         }
     }
+
+	private void SetHover(TargetController closestTarget)
+	{
+		hovering = closestTarget;
+		TurnOnLights(Color.red, hovering);
+	}
+
+	private void RemoveHover()
+	{	
+		if(hovering == null)
+		{
+			return;
+		}
+		
+		TurnOffLights(hovering);
+		hovering = null;
+	}
+
+	private void SetFirstTarget(ConnectorController connectorController)
+	{
+		connectorController.start = closestTarget;
+		FirstTarget = closestTarget;
+		RemoveHover();
+		TurnOnLights(Color.green, FirstTarget);
+		closestTarget = null;
+	}
+
+	private void TurnOnLights(Color color,TargetController target)
+	{
+		target.GetComponent<Light>().color = color;
+		target.GetComponent<Light>().intensity = 2;
+	}
+
+	private void TurnOffLights(TargetController target)
+	{
+		target.GetComponent<Light>().intensity = 0;
+	}
+
+	private bool AttemptingDiagonal(ConnectorController CC, TargetController closestTarget)
+	{
+		return ((CC.start.transform.position - closestTarget.transform.position).x != 0 && (CC.start.transform.position - closestTarget.transform.position).z != 0);
+	}
+
+	private bool CheckDuplicates(ConnectorController connectorController, TargetController closestTarget)
+	{
+		foreach(Connector conn in closestTarget.connectors)
+		{
+			if((conn.start == closestTarget && conn.end == connectorController.start) || (conn.end == closestTarget && conn.start == connectorController.start))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private void PlaceWire(ConnectorController connectorController, TargetController closestTarget)
+	{
+		connectorController.end = closestTarget;
+		Connector newConnector = connectorController.PlaceWire();
+		closestTarget.connectors.Add(newConnector);
+		newConnector.start.connectors.Add(newConnector);
+		closestTarget.connectorIndex++;
+		newConnector.start.connectorIndex++;
+		newConnector.start.GetComponent<Light>().intensity = 0;
+		newConnector.end.GetComponent<Light>().intensity = 0;
+		FirstTarget = null;
+		waiting = true;
+	}
+
 }
