@@ -4,10 +4,9 @@ using System.Collections.Generic;
 
 public class TargetSelectController : MonoBehaviour {
 
-    private TargetController currentTarget;
+    private TargetController closestTarget;
     private TargetController FirstTarget;
 	private TargetController hovering;
-	private TargetController closestTarget;
     private ClosestObjectFinder finder;
     private GameObject controller;
     private bool waiting = false;
@@ -62,20 +61,19 @@ public class TargetSelectController : MonoBehaviour {
 		if(GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
         {
             selected = finder.selected;
-            currentTarget = closestTarget;
             if (selected != null)
             {
                 ConnectorController connectorController = selected.GetComponent<ConnectorController>();
                 if (connectorController == null)
                 {
-                    if (selected != null && currentTarget.instantiated == null)
+                    if (closestTarget.instantiated == null)
                     {
-                        currentTarget.instantiated = currentTarget.PlaceObject(selected);
+                        closestTarget.instantiated = closestTarget.PlaceObject(selected);
                     }
-                    else if (selected != null && selected.name != currentTarget.instantiated.name)
+                    else if (selected.name != closestTarget.instantiated.name) //there is an object on the target, but you are trying to place something else
                     {
-                        Destroy(currentTarget.instantiated);
-                        currentTarget.instantiated = currentTarget.PlaceObject(selected);
+                        Destroy(closestTarget.instantiated);
+                        closestTarget.instantiated = closestTarget.PlaceObject(selected);
                     }
                 }
                 else
@@ -86,44 +84,17 @@ public class TargetSelectController : MonoBehaviour {
                         {
 							SetFirstTarget(connectorController);
                         }
-                        else if (connectorController.end == null && currentTarget != connectorController.start)
+                        else if (connectorController.end == null && closestTarget != connectorController.start)
                         {
-                            if ((connectorController.start.transform.position - currentTarget.transform.position).x != 0 && (connectorController.start.transform.position - currentTarget.transform.position).z != 0)
+							if(AttemptingDiagonal(connectorController, closestTarget))
                             {
                                 return;
                             }
-
-                            bool duplicate = false;
-                            foreach (Connector conn in currentTarget.connectors)
-                            {
-                                if (conn.start == currentTarget)
-                                {
-                                    if (conn.end == connectorController.start)
-                                    {
-                                        duplicate = true;
-                                    }
-                                }
-                                else if (conn.end == currentTarget)
-                                {
-                                    if (conn.start == connectorController.start)
-                                    {
-                                        duplicate = true;
-                                    }
-                                }
-                            }
-
+							bool duplicate = CheckDuplicates(connectorController,closestTarget);
                             if (!duplicate)
                             {
-                                connectorController.end = currentTarget;
-                                Connector newConnector = connectorController.PlaceWire();
-                                currentTarget.connectors.Add(newConnector);
-                                newConnector.start.connectors.Add(newConnector);
-                                currentTarget.connectorIndex++;
-                                newConnector.start.connectorIndex++;
-                                newConnector.start.GetComponent<Light>().intensity = 0;
-                                newConnector.end.GetComponent<Light>().intensity = 0;
-                                FirstTarget = null;
-                                waiting = true;
+								PlaceWire(connectorController, closestTarget );
+                                
                             }
                         }
                     }
@@ -163,11 +134,11 @@ public class TargetSelectController : MonoBehaviour {
 
 	private void SetFirstTarget(ConnectorController connectorController)
 	{
-		connectorController.start = currentTarget;
-		FirstTarget = currentTarget;
+		connectorController.start = closestTarget;
+		FirstTarget = closestTarget;
 		RemoveHover();
 		TurnOnLights(Color.green, FirstTarget);
-		currentTarget = null;
+		closestTarget = null;
 	}
 
 	private void TurnOnLights(Color color,TargetController target)
@@ -180,4 +151,37 @@ public class TargetSelectController : MonoBehaviour {
 	{
 		target.GetComponent<Light>().intensity = 0;
 	}
+
+	private bool AttemptingDiagonal(ConnectorController CC, TargetController closestTarget)
+	{
+		return ((CC.start.transform.position - closestTarget.transform.position).x != 0 && (CC.start.transform.position - closestTarget.transform.position).z != 0);
+	}
+
+	private bool CheckDuplicates(ConnectorController connectorController, TargetController closestTarget)
+	{
+		foreach(Connector conn in closestTarget.connectors)
+		{
+			if((conn.start == closestTarget && conn.end == connectorController.start) || (conn.end == closestTarget && conn.start == connectorController.start))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private void PlaceWire(ConnectorController connectorController, TargetController closestTarget)
+	{
+		connectorController.end = closestTarget;
+		Connector newConnector = connectorController.PlaceWire();
+		closestTarget.connectors.Add(newConnector);
+		newConnector.start.connectors.Add(newConnector);
+		closestTarget.connectorIndex++;
+		newConnector.start.connectorIndex++;
+		newConnector.start.GetComponent<Light>().intensity = 0;
+		newConnector.end.GetComponent<Light>().intensity = 0;
+		FirstTarget = null;
+		waiting = true;
+	}
+
 }
