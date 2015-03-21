@@ -22,30 +22,44 @@ public class TargetSelectController : MonoBehaviour {
     private void FixedUpdate()
     {
 		closestTarget = finder.ClosestTarget();
-
-		if(closestTarget != null && hovering == null)
-		{
-			SetHover(closestTarget);
-		}
-
-		else if(closestTarget == null && hovering != null)
+		
+		//if we aren't close to anything remove the hovering and return
+		if(closestTarget == null)
 		{
 			RemoveHover();
 			return;
 		}
-
-		else if(closestTarget != hovering)
+		
+		//connector select mode
+		else if (FirstTarget !=null) 
 		{
-			if(hovering !=null)	
+			if(closestTarget == FirstTarget)
 			{
 				RemoveHover();
 			}
-
-			SetHover(closestTarget);
+			if(closestTarget != FirstTarget && closestTarget != hovering)
+			{
+				RemoveHover();
+				SetHover(closestTarget);
+			}
 		}
+		else 
+		{
+			if(hovering == null)
+			{
+				SetHover(closestTarget);
+			}
+
+			else if(hovering != null && closestTarget != hovering)
+			{
+				RemoveHover();
+				SetHover(closestTarget);
+			}
+		}
+		
 
         GameObject selected = null;
-		if(GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1) && closestTarget != null)
+		if(GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
         {
             selected = finder.selected;
             currentTarget = closestTarget;
@@ -132,52 +146,28 @@ public class TargetSelectController : MonoBehaviour {
 
 	private void SetHover(TargetController closestTarget)
 	{
-		//if(closestTarget.GetComponent<ConnectorController> ==
-		if(FirstTarget != null && closestTarget == FirstTarget)
-			return;
 		hovering = closestTarget;
 		TurnOnLights(Color.red, hovering);
 	}
 
 	private void RemoveHover()
 	{	
-		
-		if(FirstTarget != null)		//in connector select mode
+		if(hovering == null)
 		{
-			if(hovering == FirstTarget)		//hover is set to the current selected target, do nothing
-			{
-				return;
-			}
-			if(closestTarget !=FirstTarget && hovering !=null)
-			{
-				TurnOffLights(hovering);
-				hovering = null;
-			}
+			return;
 		}
 		
-		else  // no connector mode
-		{
-			if(closestTarget != null && closestTarget != hovering)
-			{
-				TurnOffLights(hovering);
-				hovering = closestTarget;
-				TurnOnLights(Color.red, hovering);
-			}
-			else 
-			{
-				TurnOffLights(hovering);
-				hovering = null;
-			}
-			
-		}
-		
+		TurnOffLights(hovering);
+		hovering = null;
 	}
 
 	private void SetFirstTarget(ConnectorController connectorController)
 	{
 		connectorController.start = currentTarget;
 		FirstTarget = currentTarget;
+		RemoveHover();
 		TurnOnLights(Color.green, FirstTarget);
+		currentTarget = null;
 	}
 
 	private void TurnOnLights(Color color,TargetController target)
