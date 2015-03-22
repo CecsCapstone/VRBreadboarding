@@ -2,6 +2,7 @@
 using System.Collections;
 using Leap;
 using System.Collections.Generic;
+using Hovercast.Core.Custom;
 
 public class ClosestObjectFinder : MonoBehaviour {
 	public Controller controller;
