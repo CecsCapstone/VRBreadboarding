@@ -2,29 +2,28 @@
 using System.Collections;
 using Hovercast.Core.Navigation;
 using Leap;
+using System;
 
-public class ResistorValueSelectListener: HovercastNavItemListener<NavItemSlider> 
+public class ResistorValueSelectListener:ResistanceScaleSelectBaseListener<NavItemSlider>
 {
-	private GameObject resistorObject;
-	private Resistor resistor;
+	
 	private GameObject controller;
     protected override void Setup()
     {
+		base.Setup();
         Item.OnValueChanged += HandleValueChanged;
-		resistorObject = GameObject.FindGameObjectWithTag("ResistorObject");
-		resistor = resistorObject.GetComponent<Resistor>();
 		controller = GameObject.FindGameObjectWithTag("HandController");
-		Debug.Log("starting slider");
+		Item.ValueToLabel = (s => Component.Label + ": " + Math.Round(s.RangeValue));
 
     }
 	
     protected override void BroadcastInitialValue()
     {
-        HandleValueChanged(Item);
+        //HandleValueChanged(Item);
     }
 
 	private void HandleValueChanged(NavItem<float> pNavItem)
     {
-		resistor.setResistance((int)(pNavItem.Value * 100));
+		resistor.setResistance(Item.RangeValue);
     }
 }
