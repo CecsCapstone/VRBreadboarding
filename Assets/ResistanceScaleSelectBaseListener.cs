@@ -15,6 +15,8 @@ public abstract class ResistanceScaleSelectBaseListener<T> : HovercastNavItemLis
 	{
 		resistorObject = GameObject.FindGameObjectWithTag("ResistorObject");
 		resistor = resistorObject.GetComponent<Resistor>();
+		resistor.setResistance(1f);
+		
 	
 	}
 
