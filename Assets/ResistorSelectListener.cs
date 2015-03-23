@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Hovercast.Core.Navigation;
+using Hovercast.Core.Display; 
 using Leap;
 
 public class ResistorSelectListener : HovercastNavItemListener<NavItemRadio>
@@ -12,7 +13,6 @@ public class ResistorSelectListener : HovercastNavItemListener<NavItemRadio>
 	
     protected override void BroadcastInitialValue()
     {
-        HandleValueChanged(Item);
     }
 
     private void HandleValueChanged(NavItem<bool> pNavItem)
@@ -25,6 +25,8 @@ public class ResistorSelectListener : HovercastNavItemListener<NavItemRadio>
             return;
         }
         controller.GetComponent<ClosestObjectFinder>().Select(resistor);
+
+		GameObject.FindGameObjectWithTag("TestTag").GetComponent<HovercastNavItem>().GetItem().IsVisible = false;
         //GameObject.FindObjectOfType<TargetSelectController>().enabled = true;
         //resistor.GetComponent<SelectedObject>().Select();
     }

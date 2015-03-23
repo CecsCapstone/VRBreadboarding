@@ -513,15 +513,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 472356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.0500000007
+      value: .141100004
       objectReference: {fileID: 0}
     - target: {fileID: 472356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .76700002
+      value: .765100002
       objectReference: {fileID: 0}
     - target: {fileID: 472356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -.407999992
+      value: -.547599971
       objectReference: {fileID: 0}
     - target: {fileID: 472356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
       propertyPath: m_LocalRotation.x
@@ -541,7 +541,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 172356, guid: f4772c4338119114d835cc000de8bdbc, type: 2}
       propertyPath: m_TagString
@@ -1105,6 +1105,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!1 &327623484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 327623485}
+  - 114: {fileID: 327623486}
+  - 114: {fileID: 327623487}
+  m_Layer: 0
+  m_Name: ResustanceScaleOhms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327623485
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327623484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 794139964}
+  m_RootOrder: 0
+--- !u!114 &327623486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327623484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 4
+  Id: 
+  Label: Ohms
+  RelativeSize: 1
+  IsVisible: 1
+  IsEnabled: 1
+  NavigateBackUponSelect: 0
+  CheckboxValue: 0
+  RadioValue: 1
+  SliderTicks: 0
+  SliderSnaps: 0
+  SliderRangeMin: 0
+  SliderRangeMax: 1
+  SliderValue: 0
+  SliderAllowJump: 1
+--- !u!114 &327623487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327623484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5702aa3e395c3684ea41caf14c3c5301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &378377643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,6 +1890,129 @@ MonoBehaviour:
   CustomizationProvider: {fileID: 955937214}
   InputProvider: {fileID: 1243289727}
   OptionalCameraReference: {fileID: 0}
+--- !u!1 &636369187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 636369188}
+  - 114: {fileID: 636369189}
+  - 114: {fileID: 636369190}
+  m_Layer: 0
+  m_Name: ResustanceScaleKOhms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &636369188
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636369187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 794139964}
+  m_RootOrder: 1
+--- !u!114 &636369189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636369187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 4
+  Id: 
+  Label: KOhms
+  RelativeSize: 1
+  IsVisible: 1
+  IsEnabled: 1
+  NavigateBackUponSelect: 0
+  CheckboxValue: 0
+  RadioValue: 0
+  SliderTicks: 0
+  SliderSnaps: 0
+  SliderRangeMin: 0
+  SliderRangeMax: 1
+  SliderValue: 0
+  SliderAllowJump: 1
+--- !u!114 &636369190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636369187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955ff34c9c4eb134f921875c29ab7185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &794139963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 794139964}
+  - 114: {fileID: 794139966}
+  m_Layer: 0
+  m_Name: SetResistanceMenuItem
+  m_TagString: TestTag
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &794139964
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794139963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 327623485}
+  - {fileID: 636369188}
+  - {fileID: 1265650927}
+  m_Father: {fileID: 955937213}
+  m_RootOrder: 3
+--- !u!114 &794139966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794139963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
+  Id: 
+  Label: Set Resistance
+  RelativeSize: 1
+  IsVisible: 1
+  IsEnabled: 1
+  NavigateBackUponSelect: 0
+  CheckboxValue: 1
+  RadioValue: 0
+  SliderTicks: 0
+  SliderSnaps: 0
+  SliderRangeMin: 0
+  SliderRangeMax: 1
+  SliderValue: 0
+  SliderAllowJump: 1
 --- !u!1 &794936699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2572,9 @@ GameObject:
   - 4: {fileID: 955937213}
   - 114: {fileID: 955937215}
   - 114: {fileID: 955937214}
+  - 114: {fileID: 955937218}
+  - 114: {fileID: 955937217}
+  - 114: {fileID: 955937216}
   m_Layer: 0
   m_Name: MenuData
   m_TagString: Untagged
@@ -2403,6 +2595,7 @@ Transform:
   - {fileID: 34509399}
   - {fileID: 1435732455}
   - {fileID: 1617985588}
+  - {fileID: 794139964}
   m_Father: {fileID: 0}
   m_RootOrder: 18
 --- !u!114 &955937214
@@ -2428,6 +2621,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Hovercast VR
+--- !u!114 &955937216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 955937212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c60c0f625fb138429679e18c0f7864c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextSize: 20
+  TextColor: {r: 1, g: 1, b: 1, a: 1}
+  TextFont: Tahoma
+  ArrowIconColor: {r: 1, g: 1, b: 1, a: 1}
+  ToggleIconColor: {r: 1, g: 1, b: 1, a: 1}
+  BackgroundColor: {r: .100000001, g: .100000001, b: .100000001, a: .5}
+  EdgeColor: {r: 1, g: 1, b: 1, a: .5}
+  HighlightColor: {r: .100000001, g: .5, b: .899999976, a: 1}
+  SelectionColor: {r: .100000001, g: .899999976, b: .200000003, a: 1}
+  SliderTrackColor: {r: .100000001, g: .100000001, b: .100000001, a: .5}
+  SliderFillColor: {r: .100000001, g: .899999976, b: .200000003, a: .5}
+  SliderTickColor: {r: 1, g: 1, b: 1, a: .100000001}
+--- !u!114 &955937217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 955937212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01435548c2440b438cc85e31f4d6acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InheritSettings: 1
+  TextSize: 30
+  TextColor: {r: 1, g: 1, b: 1, a: 1}
+  TextFont: Tahoma
+  BackgroundColor: {r: .100000001, g: .100000001, b: .100000001, a: .5}
+--- !u!114 &955937218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 955937212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9657eedb7aa2e54bae70e00c97453c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColorNormal: {r: 1, g: 1, b: 1, a: .600000024}
+  ColorHighlighted: {r: 1, g: 1, b: 1, a: 1}
+  RadiusNormal: .119999997
+  RadiusHighlighted: .0599999987
+  ThicknessNormal: .100000001
+  ThicknessHighlighted: .400000006
 --- !u!1 &1013907758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,6 +3037,72 @@ MonoBehaviour:
   CursorFinger: 1
   NavigationBackGrabThreshold: .300000012
   NavigationBackUngrabThreshold: .150000006
+--- !u!1 &1265650926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1265650927}
+  - 114: {fileID: 1265650928}
+  - 114: {fileID: 1265650929}
+  m_Layer: 0
+  m_Name: ResistanceSlider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265650927
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265650926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 794139964}
+  m_RootOrder: 2
+--- !u!114 &1265650928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265650926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 5
+  Id: 
+  Label: Resitance
+  RelativeSize: 3
+  IsVisible: 1
+  IsEnabled: 1
+  NavigateBackUponSelect: 0
+  CheckboxValue: 0
+  RadioValue: 0
+  SliderTicks: 0
+  SliderSnaps: 100
+  SliderRangeMin: 0
+  SliderRangeMax: 100
+  SliderValue: 1
+  SliderAllowJump: 1
+--- !u!114 &1265650929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265650926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d66d34c253911498317f985efd145d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1265981801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,6 +3174,7 @@ GameObject:
   - 23: {fileID: 1411214146}
   - 108: {fileID: 1411214145}
   - 114: {fileID: 1411214151}
+  - 114: {fileID: 1411214150}
   m_Layer: 0
   m_Name: Resistor
   m_TagString: ResistorObject
@@ -2955,6 +3271,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!114 &1411214150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1411214144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f164476261f29ee41a0d8ed9c101c6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistance: 0
 --- !u!114 &1411214151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4779,7 +5107,7 @@ Transform:
   m_PrefabInternal: {fileID: 154261217}
   m_GameObject: {fileID: 2146428429}
   m_LocalRotation: {x: .5, y: .5, z: -.5, w: .5}
-  m_LocalPosition: {x: -.0500000007, y: .76700002, z: -.407999992}
+  m_LocalPosition: {x: .141100004, y: .765100002, z: -.547599971}
   m_LocalScale: {x: .0199999996, y: .0199999996, z: .0199999996}
   m_Children: []
   m_Father: {fileID: 0}
