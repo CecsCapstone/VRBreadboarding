@@ -34,5 +34,7 @@ public class DeselectListener : HovercastNavItemListener<NavItemRadio>
             }
             finder.selected = null;
         }
+
+        pNavItem.Value = !pNavItem.Value;
     }
 }

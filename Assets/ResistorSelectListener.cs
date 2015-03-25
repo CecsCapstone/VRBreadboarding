@@ -26,7 +26,7 @@ public class ResistorSelectListener : HovercastNavItemListener<NavItemRadio>
         }
         controller.GetComponent<ClosestObjectFinder>().Select(resistor);
 
-		GameObject.FindGameObjectWithTag("TestTag").GetComponent<HovercastNavItem>().GetItem().IsVisible = false;
+		//GameObject.FindGameObjectWithTag("TestTag").GetComponent<HovercastNavItem>().GetItem().IsVisible = false;
         //GameObject.FindObjectOfType<TargetSelectController>().enabled = true;
         //resistor.GetComponent<SelectedObject>().Select();
     }

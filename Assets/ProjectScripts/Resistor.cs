@@ -3,10 +3,10 @@ using System.Collections;
 
 public class Resistor : MonoBehaviour {
 
-	private float resistance;
+	public float resistance;
+    public EnumScript.ResistanceScale scale; 
 	GameObject resistorObject;
 	GameObject controller;
-	private EnumScript.ResistanceScale scale; 
 
 
 	void start ()
