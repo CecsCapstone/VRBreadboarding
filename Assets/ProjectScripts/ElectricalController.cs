@@ -10,6 +10,7 @@ public class ElectricalController : MonoBehaviour
     List<Connector> currentTargetConnectors;
     Connector power;
     Connector ground;
+    bool isTurnedOn; 
 
 	// Use this for initialization
 	void Start () 
@@ -18,11 +19,33 @@ public class ElectricalController : MonoBehaviour
         currentTargetConnectors = GameObject.FindGameObjectWithTag("VoltageTarget").GetComponent<TargetController>().connectors;
         power = currentTargetConnectors[0];
         ground = currentTargetConnectors[1];
+        currentTargetConnectors = power.end.connectors;
+        isTurnedOn = false;
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
     {
 
 	}
+
+    public void TurnOn()
+    {
+        isTurnedOn = true;
+        Analyze();
+    }
+
+    public void TurnOff()
+    {
+        isTurnedOn = false;
+    }
+
+    public bool IsTurnedOn()
+    {
+        return isTurnedOn;
+    }
+
+    private void Analyze()
+    {
+    }
 }

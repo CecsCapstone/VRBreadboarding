@@ -10,7 +10,6 @@ public class ClosestObjectFinder : MonoBehaviour {
 	public float threshhold = .05f;
 	public GameObject selected = null;
 	GameObject closest = null;
-
     Vector3 position;
 
 	// Use this for initialization
@@ -19,13 +18,38 @@ public class ClosestObjectFinder : MonoBehaviour {
         controller.EnableGesture(Gesture.GestureType.TYPESWIPE);
 	}
 
+    void FixedUpdate()
+    {
+        position = GetTipPosition();
+        if (selected == null)
+        {
+            if (GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
+            {
+                Debug.Log("pinching");
+                GameObject closestItem = ClosestItem();
+                if (closestItem != null)
+                {
+                    Debug.Log(closestItem);
+                    if (closestItem.GetComponent<Connector>() != null)
+                    {
+                        Connector connector = closestItem.GetComponent<Connector>();
+                        connector.start.RemoveConnector(connector);
+                        connector.end.RemoveConnector(connector);
+                        
+                    }
+                    Destroy(closestItem);
+                }
+            }
+        }
+    }
+
     public GameObject ClosestItem()
     {
 		List<Collider> close_things = getUsefulCloseThings();
         float closestDistance = Mathf.Infinity;
         foreach(var item in close_things)
         {
-            if (item != null && item.tag == "GrabbableObject")
+            if (item != null && item.GetComponent<SelectedObject>() != null && item.GetComponent<SelectedObject>().enabled == false)
             {
                 float dist = Vector3.Distance(position, item.transform.position);
                 if (closestDistance > dist)
@@ -65,68 +89,11 @@ public class ClosestObjectFinder : MonoBehaviour {
 		return null;
     }
 	
-	// Update is called once per frame
-	void FixedUpdate () 
-    {
-        frame = controller.Frame();
-        if (frame.Gestures().Count > 0 && selected != null && selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
-        {
-            selected.GetComponent<ConnectorController>().Reset();
-        }
-
-
-        position = GetTipPosition();
-
-        closest = ClosestItem();
-		if(closest != null && closest.GetComponent<SelectedObject>() != null)
-        {
-            SelectMaybe(closest, position);
-        }
-	}
-
-	void SelectMaybe(GameObject closest, Vector3 position)
-	{
-        GameObject handModel = GameObject.FindGameObjectWithTag("HandModel");
-		if (selected == null && Vector3.Distance(closest.transform.position, position) < threshhold) 
-        {
-			closest.GetComponent<SelectedObject>().TurnOnLight();
-            if (handModel != null && handModel.GetComponent<IsPinching>().Pinching(1))
-            {
-                HandleLights();
-				// Turn on selected object light
-                Select(closest);
-			}
-		}
-		else if (selected == null && Vector3.Distance(closest.transform.position, position) >= threshhold)
-		{
-               HandleLights();
-		}
-        else if (selected != null && Vector3.Distance(closest.transform.position, position) < threshhold && handModel != null && handModel.GetComponent<IsPinching>().Pinching(1))
-		{
-			selected.GetComponent<SelectedObject>().Deselect();
-            if (selected.GetComponent<ConnectorController>() != null && selected.GetComponent<ConnectorController>().start != null)
-            {
-                selected.GetComponent<ConnectorController>().Reset();
-            }
-            Select(closest);
-		}
-	}
-
     public void Select(GameObject closest)
     {
         selected = closest;
         GetComponent<HandController>().GetComponent<TargetSelectController>().enabled = true;
         selected.GetComponent<SelectedObject>().Select();
-    }
-
-    private void HandleLights()
-    {
-        // Find all other grabbable objects that are and turn off their lights
-        GameObject[] grabbableObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
-        for (int i = 0; i < grabbableObjects.Length; i++)
-        {
-            grabbableObjects[i].GetComponent<SelectedObject>().TurnOffLight();
-        }
     }
 
     private Vector3 GetTipPosition()
@@ -145,6 +112,5 @@ public class ClosestObjectFinder : MonoBehaviour {
 		List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position,threshhold,-1));
 		close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null || col.name.StartsWith("palm")|| col.tag.Contains("nonCloseThings"));
 		return close_things;
-		
 	}
 }

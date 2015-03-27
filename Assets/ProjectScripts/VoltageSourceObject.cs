@@ -16,6 +16,6 @@ public class VoltageSourceObject : MonoBehaviour {
     public void SetVoltage(float voltage)
     {
         this.voltage = voltage;
-        Debug.Log(voltage);
+        //Debug.Log(voltage);
     }
 }

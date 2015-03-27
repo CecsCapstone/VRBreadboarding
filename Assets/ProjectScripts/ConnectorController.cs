@@ -22,6 +22,7 @@ public class ConnectorController : MonoBehaviour {
         connector.AddComponent<Connector>();
         wire = connector.GetComponent<Connector>();
         wire.transform.localScale = scale;
+        wire.GetComponent<SelectedObject>().enabled = false;
         wire.start = this.start;
         wire.end = this.end;
 
