@@ -2,7 +2,7 @@
 using System.Collections;
 using Hovercast.Core.Navigation;
 
-public class KOhmsSelectListener:ResistanceScaleSelectBaseListener<NavItemRadio>
+public class KOhmsSelectListener:MenuBaseListener<NavItemRadio>
 {
 	GameObject controller;
 

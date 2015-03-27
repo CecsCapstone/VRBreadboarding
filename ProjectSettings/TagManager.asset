@@ -11,7 +11,7 @@ TagManager:
   - ResistorObject
   - ConnectorObject
   - nonCloseThings
-  - TestTag
+  - VoltageSource
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

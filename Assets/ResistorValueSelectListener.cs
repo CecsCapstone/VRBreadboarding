@@ -4,7 +4,7 @@ using Hovercast.Core.Navigation;
 using Leap;
 using System;
 
-public class ResistorValueSelectListener:ResistanceScaleSelectBaseListener<NavItemSlider>
+public class ResistorValueSelectListener:MenuBaseListener<NavItemSlider>
 {
 	
 	private GameObject controller;
@@ -12,7 +12,6 @@ public class ResistorValueSelectListener:ResistanceScaleSelectBaseListener<NavIt
     {
 		base.Setup();
         Item.OnValueChanged += HandleValueChanged;
-		controller = GameObject.FindGameObjectWithTag("HandController");
 		Item.ValueToLabel = (s => Component.Label + ": " + Math.Round(s.RangeValue));
 
     }

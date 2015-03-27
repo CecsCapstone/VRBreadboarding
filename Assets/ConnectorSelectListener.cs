@@ -3,10 +3,11 @@ using System.Collections;
 using Hovercast.Core.Navigation;
 using Leap;
 
-public class ConnectorSelectListener : HovercastNavItemListener<NavItemRadio>
+public class ConnectorSelectListener : MenuBaseListener<NavItemRadio>
 {
     protected override void Setup()
     {
+        base.Setup();
         Item.OnValueChanged += HandleValueChanged;
     }
 
@@ -17,15 +18,11 @@ public class ConnectorSelectListener : HovercastNavItemListener<NavItemRadio>
 
     private void HandleValueChanged(NavItem<bool> pNavItem)
     {
-        GameObject connector = GameObject.FindGameObjectWithTag("ConnectorObject");
-        GameObject controller = GameObject.FindGameObjectWithTag("HandController");
         if (!pNavItem.Value)
         {
             connector.GetComponent<SelectedObject>().Deselect();
             return;
         }
         controller.GetComponent<ClosestObjectFinder>().Select(connector);
-        //GameObject.FindObjectOfType<TargetSelectController>().enabled = true;
-        //connector.GetComponent<SelectedObject>().Select();
     }
 }

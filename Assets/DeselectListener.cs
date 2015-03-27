@@ -3,27 +3,22 @@ using System.Collections;
 using Hovercast.Core.Navigation;
 using Leap;
 
-public class DeselectListener : HovercastNavItemListener<NavItemRadio>
+public class DeselectListener : MenuBaseListener<NavItemSelector>
 {
     protected override void Setup()
     {
-        Item.OnValueChanged += HandleValueChanged;
+        Item.OnSelected += HandleSelected;
+        base.Setup();
     }
 
     protected override void BroadcastInitialValue()
     {
-        HandleValueChanged(Item);
     }
 
-    private void HandleValueChanged(NavItem<bool> pNavItem)
+    private void HandleSelected(NavItem pNavItem)
     {
-        GameObject controller = GameObject.FindGameObjectWithTag("HandController");
-        ClosestObjectFinder finder = controller.GetComponent<ClosestObjectFinder>();
-        if (!pNavItem.Value)
-        {
-            return;
-        }
-
+        
+       
         if (finder.selected != null)
         {
             finder.selected.GetComponent<SelectedObject>().Deselect();
@@ -34,7 +29,5 @@ public class DeselectListener : HovercastNavItemListener<NavItemRadio>
             }
             finder.selected = null;
         }
-
-        pNavItem.Value = !pNavItem.Value;
     }
 }
