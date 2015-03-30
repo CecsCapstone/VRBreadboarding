@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b856f0fa97ea3c44925a2c3d22e74e8
+guid: 03ccb45e7e756734a9648e8aa83be036
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -7,7 +7,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: 5320334
+    4300000: LED 5mm
     9500000: //RootNode
   materials:
     importMaterials: 1
