@@ -1,4 +1,4 @@
-# Blender v2.73 (sub 0) OBJ File: ''
+# Blender v2.73 (sub 0) OBJ File: 'wire.blend'
 # www.blender.org
 mtllib wire.mtl
 o NurbsPath
@@ -538,7 +538,7 @@ v 1.721039 -0.148291 -0.529215
 v 1.727569 -0.171965 -0.549713
 v 1.734028 -0.199260 -0.565092
 v 1.740167 -0.229128 -0.574761
-usemtl None
+usemtl Material
 s off
 f 82 83 115 114
 f 93 124 123 122 121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 105 104 103 102 101 100 99 98 97 96 95 94

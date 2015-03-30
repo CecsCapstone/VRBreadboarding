@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: 0da049865954d2b468c881874c3e48b3
+guid: e1e9ee86f1bff95488ba5bf071b07942
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: LED_5mm
+    7400000: Default Take
     9500000: //RootNode
   materials:
     importMaterials: 1
