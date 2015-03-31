@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11443892}
   - 114: {fileID: 11479062}
   m_Layer: 0
-  m_Name: connector
+  m_Name: Connector
   m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
