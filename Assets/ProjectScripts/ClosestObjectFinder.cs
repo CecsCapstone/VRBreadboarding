@@ -25,11 +25,9 @@ public class ClosestObjectFinder : MonoBehaviour {
         {
             if (GameObject.FindGameObjectWithTag("HandModel") != null && GameObject.FindGameObjectWithTag("HandModel").GetComponent<IsPinching>().Pinching(1))
             {
-                Debug.Log("pinching");
                 GameObject closestItem = ClosestItem();
                 if (closestItem != null)
                 {
-                    Debug.Log(closestItem);
                     if (closestItem.GetComponent<Connector>() != null)
                     {
                         Connector connector = closestItem.GetComponent<Connector>();

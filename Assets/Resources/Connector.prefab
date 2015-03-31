@@ -13,6 +13,7 @@ GameObject:
   - 95: {fileID: 9587244}
   - 114: {fileID: 11443892}
   - 114: {fileID: 11479062}
+  - 64: {fileID: 6421854}
   m_Layer: 0
   m_Name: Connector
   m_TagString: Connector
@@ -58,6 +59,19 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187244}
+  m_Mesh: {fileID: 4300000, guid: fd115ac42ed47a54eabdf64cded7b178, type: 3}
+--- !u!64 &6421854
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: fd115ac42ed47a54eabdf64cded7b178, type: 3}
 --- !u!95 &9587244
 Animator:
