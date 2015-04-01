@@ -14,8 +14,10 @@ TagManager:
   - VoltageSource
   - VoltageTarget
   - ElectricalController
+  - LEDObject
   - 
   - 
+  - TestTag
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

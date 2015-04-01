@@ -145,9 +145,11 @@ GameObject:
   - 95: {fileID: 26808345}
   - 114: {fileID: 26808350}
   - 108: {fileID: 26808349}
+  - 114: {fileID: 26808351}
+  - 65: {fileID: 26808352}
   m_Layer: 0
   m_Name: LED
-  m_TagString: Untagged
+  m_TagString: LEDObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,6 +258,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 26808349}
+--- !u!114 &26808351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26808344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9155a4dbf2d113e439b6ff715fd1df1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &26808352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26808344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0550000407, y: .0599962845, z: .358000249}
+  m_Center: {x: -.0731026083, y: .0299997814, z: .228999868}
 --- !u!1 &27590650
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +441,7 @@ Transform:
   m_Children:
   - {fileID: 1776869342}
   - {fileID: 1435732455}
+  - {fileID: 1554607628}
   m_Father: {fileID: 955937213}
   m_RootOrder: 0
 --- !u!1 &67969253
@@ -5039,7 +5065,7 @@ Rigidbody:
   m_Mass: 10
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -5572,6 +5598,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ccb45e7e756734a9648e8aa83be036, type: 3}
       propertyPath: m_LocalScale.z
       value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ccb45e7e756734a9648e8aa83be036, type: 3}
+      propertyPath: m_TagString
+      value: LEDObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ccb45e7e756734a9648e8aa83be036, type: 3}
@@ -6404,7 +6434,7 @@ GameObject:
   - 114: {fileID: 1359045032}
   - 114: {fileID: 1359045034}
   - 108: {fileID: 1359045033}
-  - 64: {fileID: 1359045035}
+  - 65: {fileID: 1359045035}
   m_Layer: 0
   m_Name: Resistor
   m_TagString: ResistorObject
@@ -6529,8 +6559,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 1359045033}
---- !u!64 &1359045035
-MeshCollider:
+--- !u!65 &1359045035
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -6539,9 +6569,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 9b0f3673725533a4192d97e4017ba0ef, type: 3}
+  m_Size: {x: .0183387995, y: .0247299504, z: .00222539203}
+  m_Center: {x: 0, y: .0123649752, z: 0}
 --- !u!1001 &1360846810
 Prefab:
   m_ObjectHideFlags: 0
@@ -7333,6 +7362,72 @@ MeshFilter:
   m_PrefabInternal: {fileID: 832386476}
   m_GameObject: {fileID: 1552691443}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1554607627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1554607628}
+  - 114: {fileID: 1554607629}
+  - 114: {fileID: 1554607630}
+  m_Layer: 0
+  m_Name: LEDMenuItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1554607628
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1554607627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 34509399}
+  m_RootOrder: 2
+--- !u!114 &1554607629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1554607627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 4
+  Id: 
+  Label: LED
+  RelativeSize: 1
+  IsVisible: 1
+  IsEnabled: 1
+  NavigateBackUponSelect: 1
+  CheckboxValue: 0
+  RadioValue: 0
+  SliderTicks: 0
+  SliderSnaps: 0
+  SliderRangeMin: 0
+  SliderRangeMax: 1
+  SliderValue: 0
+  SliderAllowJump: 1
+--- !u!114 &1554607630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1554607627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be33703b14a65a7469143d0b8c07c651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1561250244
 GameObject:
   m_ObjectHideFlags: 0
@@ -8483,7 +8578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 4
   Id: 
-  Label: Select Resistor
+  Label: Resistor
   RelativeSize: 1
   IsVisible: 1
   IsEnabled: 1

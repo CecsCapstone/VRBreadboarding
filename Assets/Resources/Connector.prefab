@@ -13,7 +13,7 @@ GameObject:
   - 95: {fileID: 9587244}
   - 114: {fileID: 11443892}
   - 114: {fileID: 11479062}
-  - 64: {fileID: 6421854}
+  - 65: {fileID: 6500394}
   m_Layer: 0
   m_Name: Connector
   m_TagString: Connector
@@ -60,8 +60,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187244}
   m_Mesh: {fileID: 4300000, guid: fd115ac42ed47a54eabdf64cded7b178, type: 3}
---- !u!64 &6421854
-MeshCollider:
+--- !u!65 &6500394
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -70,9 +70,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: fd115ac42ed47a54eabdf64cded7b178, type: 3}
+  m_Size: {x: .049923487, y: .144521877, z: .434025824}
+  m_Center: {x: .00797643606, y: .0654269084, z: -.0476278886}
 --- !u!95 &9587244
 Animator:
   serializedVersion: 3

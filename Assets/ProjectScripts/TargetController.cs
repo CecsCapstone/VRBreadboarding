@@ -19,7 +19,15 @@ public class TargetController : MonoBehaviour {
 
     public GameObject PlaceObject(GameObject placingObject)
     {
-        instantiated = Instantiate(placingObject, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        if (placingObject.GetComponent<LED>() == null)
+        {
+            instantiated = Instantiate(placingObject, transform.position, Quaternion.Euler(placingObject.transform.localEulerAngles.x, placingObject.transform.localEulerAngles.y, placingObject.transform.localEulerAngles.z)) as GameObject;
+        }
+        else
+        {
+            Vector3 LEDPosition = new Vector3(transform.position.x - .015f, transform.position.y - .09f, transform.position.z - .008f);
+            instantiated = Instantiate(placingObject, LEDPosition, Quaternion.Euler(placingObject.transform.localEulerAngles.x, placingObject.transform.localEulerAngles.y, placingObject.transform.localEulerAngles.z)) as GameObject;
+        }
         instantiated.GetComponent<SelectedObject>().TurnOffLight();
         //instantiated.GetComponent<Collider>().enabled = false;
         //instantiated.GetComponent<Rigidbody>().useGravity = false;

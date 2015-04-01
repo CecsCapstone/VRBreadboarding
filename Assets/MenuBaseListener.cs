@@ -11,7 +11,9 @@ public abstract class MenuBaseListener<T> : HovercastNavItemListener<T> where T 
 	protected GameObject resistorObject { get; private set; }
     protected GameObject controller { get; private set; }
     protected ClosestObjectFinder finder { get; private set; }
-    protected GameObject connector {get; private set;}  
+    protected GameObject connector {get; private set;}
+    protected GameObject LEDObject { get; private set; }
+    protected LED LED { get; private set; }
 	
 
 	protected override void Setup() 
@@ -22,6 +24,8 @@ public abstract class MenuBaseListener<T> : HovercastNavItemListener<T> where T 
         controller = GameObject.FindGameObjectWithTag("HandController");
         finder = controller.GetComponent<ClosestObjectFinder>();
 	    connector = GameObject.FindGameObjectWithTag("ConnectorObject");
+        LEDObject = GameObject.FindGameObjectWithTag("LEDObject");
+        LED = LEDObject.GetComponent<LED>();
 	}
 
 
