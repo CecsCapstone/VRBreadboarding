@@ -476,7 +476,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -771,6 +771,76 @@ Transform:
   - {fileID: 794936700}
   m_Father: {fileID: 0}
   m_RootOrder: 16
+--- !u!1 &95279029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 95279032}
+  - 23: {fileID: 95279031}
+  - 102: {fileID: 95279030}
+  m_Layer: 0
+  m_Name: VoltageText
+  m_TagString: VoltageText
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!102 &95279030
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95279029}
+  m_Text: 
+  m_OffsetZ: 0
+  m_CharacterSize: .0219999999
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 1
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: 42ea59c0178676540aed0a37eeb6a643, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279374514
+--- !u!23 &95279031
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95279029}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 42ea59c0178676540aed0a37eeb6a643, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!4 &95279032
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95279029}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
+  m_LocalPosition: {x: -.578000009, y: 1.11899996, z: -.797999978}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 39
 --- !u!1 &190461160
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1054,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1791,7 +1861,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3021,7 +3091,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3503,7 +3573,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3831,7 +3901,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -4676,7 +4746,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -4928,7 +4998,7 @@ MonoBehaviour:
   topLayer: {fileID: 2079810215}
   midLayer: {fileID: 685031538}
   botLayer: {fileID: 1899016766}
-  voltageSource: {fileID: 0}
+  voltageSource: {fileID: 1094579963}
   sliderHandle: {fileID: 1217097199}
 --- !u!54 &1067171123
 Rigidbody:
@@ -5652,7 +5722,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -6033,7 +6103,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -6850,7 +6920,7 @@ Transform:
   m_PrefabInternal: {fileID: 1781383134}
   m_GameObject: {fileID: 1448470520}
   m_LocalRotation: {x: -.658003211, y: .467026502, z: .500244796, w: .314122915}
-  m_LocalPosition: {x: .00980000012, y: -.0149999997, z: .00499999989}
+  m_LocalPosition: {x: .00980000012, y: -.0149999997, z: -.00100000005}
   m_LocalScale: {x: .662107587, y: .114641793, z: .0700000003}
   m_Children: []
   m_Father: {fileID: 1094579962}
@@ -7279,7 +7349,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -7887,6 +7957,10 @@ Prefab:
       propertyPath: m_Size.y
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: d727bfddbdd80af4a816987261603e08, type: 2}
+      propertyPath: voltageSource
+      value: 
+      objectReference: {fileID: 1094579963}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d727bfddbdd80af4a816987261603e08, type: 2}
   m_RootGameObject: {fileID: 2070509001}
@@ -8430,7 +8504,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -8673,7 +8747,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd115ac42ed47a54eabdf64cded7b178, type: 3}
       propertyPath: m_LocalPosition.z
-      value: .00499999989
+      value: -.00100000005
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd115ac42ed47a54eabdf64cded7b178, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9237,7 +9311,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -9668,7 +9742,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -10170,7 +10244,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -10791,7 +10865,7 @@ Light:
   m_Type: 2
   m_Color: {r: .985294104, g: 0, b: 0, a: 1}
   m_Intensity: 0
-  m_Range: .5
+  m_Range: .200000003
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

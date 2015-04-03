@@ -56,7 +56,7 @@ public class SliderDemoHandleButton : SliderHandleButtonBase
       base.Update();
       UpdateGraphics();
       
-      voltageSource.SetVoltage(sliderHandle.GetPercent()); 
+      voltageSource.SetVoltage(sliderHandle.GetPercent()/10); 
 
     }
 }

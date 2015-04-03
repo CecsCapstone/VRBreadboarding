@@ -15,7 +15,7 @@ TagManager:
   - VoltageTarget
   - ElectricalController
   - LEDObject
-  - 
+  - VoltageText
   - 
   - TestTag
   - 
