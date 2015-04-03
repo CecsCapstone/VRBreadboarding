@@ -14,7 +14,8 @@ public class TargetController : MonoBehaviour {
 	{
 		light = GetComponent<Light> ();
 		controller = GameObject.FindGameObjectWithTag ("HandController");
-        connectors = new List<Connector>();
+        if (connectors == null)
+            connectors = new List<Connector>();
 	}
 
     public GameObject PlaceObject(GameObject placingObject)
@@ -25,7 +26,7 @@ public class TargetController : MonoBehaviour {
         }
         else
         {
-            Vector3 LEDPosition = new Vector3(transform.position.x - .015f, transform.position.y - .09f, transform.position.z - .008f);
+            Vector3 LEDPosition = new Vector3(transform.position.x - .015f, transform.position.y - .07f, transform.position.z - .008f);
             instantiated = Instantiate(placingObject, LEDPosition, Quaternion.Euler(placingObject.transform.localEulerAngles.x, placingObject.transform.localEulerAngles.y, placingObject.transform.localEulerAngles.z)) as GameObject;
         }
         instantiated.GetComponent<SelectedObject>().TurnOffLight();
