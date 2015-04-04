@@ -8,14 +8,17 @@ public class ClosestObjectFinder : MonoBehaviour {
 	public Controller controller;
 	public Frame frame;
 	public float threshhold = .05f;
+	public AudioSource audio;
 	public GameObject selected = null;
 	GameObject closest = null;
     Vector3 position;
+	
 
 	// Use this for initialization
 	void Start () {
 		controller = new Controller();
         controller.EnableGesture(Gesture.GestureType.TYPESWIPE);
+		audio.Play();
 	}
 
     void FixedUpdate()

@@ -560,7 +560,7 @@ Transform:
   m_LocalScale: {x: .850000024, y: .934611559, z: .639999986}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &67969253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,7 +1293,7 @@ Transform:
   m_LocalScale: {x: .00499999989, y: 1, z: .00499999989}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 36
 --- !u!1 &323476996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshhold: .0500000007
+  audio: {fileID: 0}
   selected: {fileID: 0}
 --- !u!114 &378377648
 MonoBehaviour:
@@ -3060,7 +3061,7 @@ Transform:
   - {fileID: 1098297887}
   - {fileID: 378139602}
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 38
 --- !u!95 &701834779
 Animator:
   serializedVersion: 3
@@ -6016,6 +6017,7 @@ GameObject:
   - 114: {fileID: 1243289726}
   - 114: {fileID: 1243289725}
   - 114: {fileID: 1243289727}
+  - 82: {fileID: 1243289728}
   m_Layer: 0
   m_Name: HandController
   m_TagString: HandController
@@ -6086,6 +6088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshhold: .0500000007
+  audio: {fileID: 8300000, guid: ecfb6e132eddd814894dce74ede305fe, type: 3}
   selected: {fileID: 0}
 --- !u!114 &1243289727
 MonoBehaviour:
@@ -6102,6 +6105,64 @@ MonoBehaviour:
   CursorFinger: 1
   NavigationBackGrabThreshold: .300000012
   NavigationBackUngrabThreshold: .150000006
+--- !u!82 &1243289728
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243289722}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: ecfb6e132eddd814894dce74ede305fe, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .513999999
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1244162176
 GameObject:
   m_ObjectHideFlags: 0
@@ -6228,7 +6289,7 @@ Transform:
   m_LocalScale: {x: .00499999989, y: 1, z: .00499999989}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 37
 --- !u!1 &1265650926
 GameObject:
   m_ObjectHideFlags: 0
@@ -8161,7 +8222,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 39
 --- !u!1 &1637598982
 GameObject:
   m_ObjectHideFlags: 0
@@ -9344,7 +9405,7 @@ Transform:
   m_Children:
   - {fileID: 1644295143}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!111 &1875178109
 Animation:
   m_ObjectHideFlags: 0
