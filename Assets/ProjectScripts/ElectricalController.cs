@@ -5,8 +5,11 @@ using System.Collections.Generic;
 public class ElectricalController : MonoBehaviour 
 {
 
+	public AudioController audioController;
+
     VoltageSourceObject voltageSource;
     List<GameObject> componentsPath;
+
     TargetController currentTarget;
     TargetController previousTarget;
     TargetController voltageTarget;
@@ -14,7 +17,6 @@ public class ElectricalController : MonoBehaviour
     Connector power;
     Connector ground;
     bool isTurnedOn; 
-    int iterations = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -24,7 +26,6 @@ public class ElectricalController : MonoBehaviour
         currentTargetConnectors = voltageTarget.connectors;
         power = currentTargetConnectors[0];
         ground = currentTargetConnectors[1];
-        
 
         isTurnedOn = false;
 	}
@@ -53,9 +54,14 @@ public class ElectricalController : MonoBehaviour
 
     private void Analyze()
     {
+		int iterations = 0;
         componentsPath = new List<GameObject>();
         //currentTargetConnectors = power.end.connectors;
         previousTarget = power.end;
+		if(!FirstTargetHasTwoConnectors())
+		{
+			return;
+		}
         if(previousTarget.instantiated != null)
         {
             componentsPath.Add(previousTarget.instantiated);
@@ -94,10 +100,60 @@ public class ElectricalController : MonoBehaviour
             iterations++;
         }
 
+		if(iterations == 20)
+		{
+			audioController.playClip(EnumScript.CustomAudioClips.failHorn);
+			return;
+		}
+
+		float totalResistance = 0;
+		List<LED> LEDInCircuit = new List<LED>();
+		float totalCurrent = 0;
+
         foreach(var comp in componentsPath)
-        { Debug.Log(comp.name); }
+        {
+			if(comp.GetComponent<LED>() != null)
+			{
+				LEDInCircuit.Add(comp.GetComponent<LED>());
+			}
+			else
+			{
+				//it's probably dangerous to assume it's a resistor if it isn't an LED but that's all we got :)
+				Resistor currentResistor = comp.GetComponent<Resistor>();
+				totalResistance = currentResistor.GetResistanceInOhms();
+			}
+			Debug.Log(comp.name); 
+		}
+
+		totalCurrent = voltageSource.GetVoltage() / totalResistance;
+		
+		if(totalCurrent > LEDInCircuit[0].LEDExplode)
+		{
+			//explode LED here
+		}
+		else if(totalCurrent > LEDInCircuit[0].threshold)
+		{
+			turnOnLEDs(LEDInCircuit, totalCurrent);
+			audioController.playClip(EnumScript.CustomAudioClips.dingDing);
+		}
         Debug.Log(componentsPath);
         iterations = 0;
         
     }
+
+	private bool FirstTargetHasTwoConnectors()
+	{
+		return previousTarget.connectors.Count == 2;
+	}
+
+	private void turnOnLEDs(List<LED> LEDsInCircuit, float totalCurrent)
+	{
+		foreach(var LED in LEDsInCircuit)
+		{
+			Light LEDLight = LED.GetComponent<Light>();
+			LEDLight.color = Color.red;
+			LEDLight.intensity = totalCurrent * .5f; //arbitrary intensity
+
+		}
+	}
 }

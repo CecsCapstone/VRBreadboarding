@@ -20,4 +20,8 @@ public class VoltageSourceObject : MonoBehaviour {
         text.text = voltage.ToString("0.##V");
         //Debug.Log(voltage);
     }
+	public float GetVoltage()
+	{
+		return voltage;
+	}
 }

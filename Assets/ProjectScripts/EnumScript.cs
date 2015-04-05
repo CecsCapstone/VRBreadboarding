@@ -8,6 +8,12 @@ public class EnumScript : MonoBehaviour
 		Ohms,
 		KOhms
 	};
+
+	public enum CustomAudioClips
+	{
+		failHorn,
+		dingDing
+	};
 	void start()
 	{
 	}

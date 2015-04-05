@@ -3,8 +3,8 @@ using System.Collections;
 
 public class LED : MonoBehaviour {
 
-    float threshold = 5;
-    float LEDExplode = 6;
+    public float threshold = 5;
+    public float LEDExplode = 6;
 	// Use this for initialization
 	void Start () {
 	
