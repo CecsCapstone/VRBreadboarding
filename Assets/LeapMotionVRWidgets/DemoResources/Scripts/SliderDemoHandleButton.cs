@@ -24,14 +24,14 @@ public class SliderDemoHandleButton : SliderHandleButtonBase
     {
       topLayer.SetBloomGain(5.0f);
       botLayer.SetBloomGain(4.0f);
-      botLayer.SetColor(new Color(0.0f, 1.0f, 1.0f, 1.0f));
+	  botLayer.SetColor(new Color(0.69f,0.07f,0.07f,0.5f));
     }
 
     private void ReleasedGraphics()
     {
       topLayer.SetBloomGain(2.0f);
       botLayer.SetBloomGain(2.0f);
-      botLayer.SetColor(new Color(0.0f, 0.25f, 0.25f, 0.5f));
+      botLayer.SetColor(new Color(0.69f, 0.07f, 0.07f, 0.5f));
     }
 
     private void UpdateGraphics()

@@ -21,7 +21,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 		controller = new Controller();
         controller.EnableGesture(Gesture.GestureType.TYPESWIPE);
 		audioController = AudioController.GetComponent<AudioController>();
-		audioController.playClip(EnumScript.CustomAudioClips.failHorn);
+		//audioController.playClip(EnumScript.CustomAudioClips.failHorn);
 	}
 
     void FixedUpdate()

@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: db568410ade4f1840b3026dfa40e89c1
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Box01
+    100002: Camera
+    100004: Cylinder002
+    100006: Cylinder01
+    100008: dik
+    100010: dik001
+    100012: //RootNode
+    100014: Lamp
+    100016: Layer:yaz__002
+    100018: Layer:yaz__01
+    100020: Line002
+    100022: Line01
+    100024: Rectangle002
+    100026: Rectangle01
+    100028: Sphere007
+    100030: Sphere008
+    100032: Sphere03
+    100034: Sphere04
+    400000: Box01
+    400002: Camera
+    400004: Cylinder002
+    400006: Cylinder01
+    400008: dik
+    400010: dik001
+    400012: //RootNode
+    400014: Lamp
+    400016: Layer:yaz__002
+    400018: Layer:yaz__01
+    400020: Line002
+    400022: Line01
+    400024: Rectangle002
+    400026: Rectangle01
+    400028: Sphere007
+    400030: Sphere008
+    400032: Sphere03
+    400034: Sphere04
+    2300000: Box01
+    2300002: Cylinder002
+    2300004: Cylinder01
+    2300006: dik
+    2300008: dik001
+    2300010: Layer:yaz__002
+    2300012: Layer:yaz__01
+    2300014: Line002
+    2300016: Line01
+    2300018: Rectangle002
+    2300020: Rectangle01
+    2300022: Sphere007
+    2300024: Sphere008
+    2300026: Sphere03
+    2300028: Sphere04
+    3300000: Box01
+    3300002: Cylinder002
+    3300004: Cylinder01
+    3300006: dik
+    3300008: dik001
+    3300010: Layer:yaz__002
+    3300012: Layer:yaz__01
+    3300014: Line002
+    3300016: Line01
+    3300018: Rectangle002
+    3300020: Rectangle01
+    3300022: Sphere007
+    3300024: Sphere008
+    3300026: Sphere03
+    3300028: Sphere04
+    4300000: Rectangle002
+    4300002: dik001
+    4300004: Line002
+    4300006: Sphere008
+    4300008: Cylinder002
+    4300010: Sphere007
+    4300012: Layer:yaz__002
+    4300014: Box01
+    4300016: dik
+    4300018: Sphere03
+    4300020: Cylinder01
+    4300022: Sphere04
+    4300024: Layer:yaz__01
+    4300026: Rectangle01
+    4300028: Line01
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
