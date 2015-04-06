@@ -120,12 +120,15 @@ public class ElectricalController : MonoBehaviour
 			{
 				//it's probably dangerous to assume it's a resistor if it isn't an LED but that's all we got :)
 				Resistor currentResistor = comp.GetComponent<Resistor>();
-				totalResistance = currentResistor.GetResistanceInOhms();
+				totalResistance += currentResistor.GetResistanceInOhms();
 			}
 			Debug.Log(comp.name); 
 		}
 
-		totalCurrent = voltageSource.GetVoltage() / totalResistance;
+        totalCurrent = voltageSource.GetVoltage() / totalResistance;
+        Debug.Log(totalResistance);
+        Debug.Log(voltageSource.GetVoltage());
+        Debug.Log(totalCurrent);
 		
 		if(totalCurrent > LEDInCircuit[0].LEDExplode)
 		{
@@ -136,7 +139,6 @@ public class ElectricalController : MonoBehaviour
 			turnOnLEDs(LEDInCircuit, totalCurrent);
 			audioController.playClip(EnumScript.CustomAudioClips.dingDing);
 		}
-        Debug.Log(componentsPath);
         iterations = 0;
         
     }
