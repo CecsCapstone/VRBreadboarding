@@ -17,8 +17,10 @@ public class DeselectListener : MenuBaseListener<NavItemSelector>
 
     private void HandleSelected(NavItem pNavItem)
     {
-        
-       
+        GameObject.FindGameObjectWithTag("ResistorMenuItem").GetComponent<HovercastNavItem>().GetItem().DeselectStickySelections();
+        GameObject.FindGameObjectWithTag("ConnectorMenuItem").GetComponent<HovercastNavItem>().GetItem().DeselectStickySelections();
+        GameObject.FindGameObjectWithTag("LEDMenuItem").GetComponent<HovercastNavItem>().GetItem().DeselectStickySelections();
+
         if (finder.selected != null)
         {
             finder.selected.GetComponent<SelectedObject>().Deselect();

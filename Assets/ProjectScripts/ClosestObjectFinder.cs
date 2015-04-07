@@ -114,7 +114,7 @@ public class ClosestObjectFinder : MonoBehaviour {
 	private List<Collider> getUsefulCloseThings() 
 	{
 		List<Collider> close_things = new List<Collider>(Physics.OverlapSphere(position,threshhold,-1));
-		close_things.RemoveAll(col => col.name.StartsWith("bone") || col.GetComponent<Connector>() != null || col.name.StartsWith("palm")|| col.tag.Contains("nonCloseThings"));
+		close_things.RemoveAll(col => col.name.StartsWith("bone") || col.name.StartsWith("palm")|| col.tag.Contains("nonCloseThings"));
 		return close_things;
 	}
 }

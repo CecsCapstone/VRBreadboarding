@@ -4,24 +4,23 @@ using Hovercast.Core.Navigation;
 using Hovercast.Core.Display;
 using Leap;
 
-public class LEDSelectListener : MenuBaseListener<NavItemRadio>
+public class LEDSelectListener : MenuBaseListener<NavItemSelector>
 {
     protected override void Setup()
     {
+        Item.OnSelected += HandleSelected;
         base.Setup();
-        Item.OnValueChanged += HandleValueChanged;
     }
 
     protected override void BroadcastInitialValue()
     {
     }
 
-    private void HandleValueChanged(NavItem<bool> pNavItem)
+    private void HandleSelected(NavItem pNavItem)
     {
-        if (!pNavItem.Value)
+        if (finder.selected != null)
         {
-            LEDObject.GetComponent<SelectedObject>().Deselect();
-            return;
+            finder.selected.GetComponent<SelectedObject>().Deselect();
         }
         finder.Select(LEDObject);
     }

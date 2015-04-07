@@ -3,25 +3,23 @@ using System.Collections;
 using Hovercast.Core.Navigation;
 using Leap;
 
-public class ConnectorSelectListener : MenuBaseListener<NavItemRadio>
+public class ConnectorSelectListener : MenuBaseListener<NavItemSelector>
 {
     protected override void Setup()
     {
+        Item.OnSelected += HandleSelected;
         base.Setup();
-        Item.OnValueChanged += HandleValueChanged;
     }
 
     protected override void BroadcastInitialValue()
     {
-        HandleValueChanged(Item);
     }
 
-    private void HandleValueChanged(NavItem<bool> pNavItem)
+    private void HandleSelected(NavItem pNavItem)
     {
-        if (!pNavItem.Value)
+        if (finder.selected != null)
         {
-            connector.GetComponent<SelectedObject>().Deselect();
-            return;
+            finder.selected.GetComponent<SelectedObject>().Deselect();
         }
         controller.GetComponent<ClosestObjectFinder>().Select(connector);
     }

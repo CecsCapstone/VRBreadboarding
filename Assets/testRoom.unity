@@ -7768,7 +7768,7 @@ GameObject:
   - 114: {fileID: 1435732457}
   m_Layer: 0
   m_Name: ConnectorMenuItem
-  m_TagString: Untagged
+  m_TagString: ConnectorMenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7796,8 +7796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 4
-  Id: 
+  Type: 1
+  Id: Connector
   Label: Connector
   RelativeSize: 1
   IsVisible: 1
@@ -8586,7 +8586,7 @@ GameObject:
   - 114: {fileID: 1554607630}
   m_Layer: 0
   m_Name: LEDMenuItem
-  m_TagString: Untagged
+  m_TagString: LEDMenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8614,8 +8614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 4
-  Id: 
+  Type: 1
+  Id: LED
   Label: LED
   RelativeSize: 1
   IsVisible: 1
@@ -9844,7 +9844,7 @@ GameObject:
   - 114: {fileID: 1776869343}
   m_Layer: 0
   m_Name: ResistorMenuItem
-  m_TagString: Untagged
+  m_TagString: ResistorMenuItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9883,8 +9883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb1afde76dd246e4bf5dbfea0fa497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 4
-  Id: 
+  Type: 1
+  Id: Resistor
   Label: Resistor
   RelativeSize: 1
   IsVisible: 1
