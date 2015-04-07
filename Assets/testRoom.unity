@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9155a4dbf2d113e439b6ff715fd1df1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 5
+  threshold: 2
   LEDExplode: 6
 --- !u!65 &26808352
 BoxCollider:

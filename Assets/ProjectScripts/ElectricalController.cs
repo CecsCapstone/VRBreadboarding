@@ -107,14 +107,14 @@ public class ElectricalController : MonoBehaviour
 		}
 
 		float totalResistance = 0;
-		List<LED> LEDInCircuit = new List<LED>();
+		List<GameObject> LEDInCircuit = new List<GameObject>();
 		float totalCurrent = 0;
 
         foreach(var comp in componentsPath)
         {
 			if(comp.GetComponent<LED>() != null)
 			{
-				LEDInCircuit.Add(comp.GetComponent<LED>());
+				LEDInCircuit.Add(comp);
 			}
 			else
 			{
@@ -130,11 +130,11 @@ public class ElectricalController : MonoBehaviour
         Debug.Log(voltageSource.GetVoltage());
         Debug.Log(totalCurrent);
 		
-		if(totalCurrent > LEDInCircuit[0].LEDExplode)
+		if(totalCurrent > LEDInCircuit[0].GetComponent<LED>().LEDExplode)
 		{
 			//explode LED here
 		}
-		else if(totalCurrent > LEDInCircuit[0].threshold)
+        else if (totalCurrent > LEDInCircuit[0].GetComponent<LED>().threshold)
 		{
 			turnOnLEDs(LEDInCircuit, totalCurrent);
 			audioController.playClip(EnumScript.CustomAudioClips.dingDing);
@@ -148,7 +148,7 @@ public class ElectricalController : MonoBehaviour
 		return previousTarget.connectors.Count == 2;
 	}
 
-	private void turnOnLEDs(List<LED> LEDsInCircuit, float totalCurrent)
+	private void turnOnLEDs(List<GameObject> LEDsInCircuit, float totalCurrent)
 	{
 		foreach(var LED in LEDsInCircuit)
 		{
