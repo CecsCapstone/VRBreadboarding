@@ -20,7 +20,7 @@ public abstract class MenuBaseListener<T> : HovercastNavItemListener<T> where T 
 	{
 		resistorObject = GameObject.FindGameObjectWithTag("ResistorObject");
 		resistor = resistorObject.GetComponent<Resistor>();
-		resistor.setResistance(1f);
+		resistor.setResistance(300f);
         controller = GameObject.FindGameObjectWithTag("HandController");
         finder = controller.GetComponent<ClosestObjectFinder>();
 	    connector = GameObject.FindGameObjectWithTag("ConnectorObject");

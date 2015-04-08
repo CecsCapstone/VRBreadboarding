@@ -12,7 +12,8 @@ public class EnumScript : MonoBehaviour
 	public enum CustomAudioClips
 	{
 		failHorn,
-		dingDing
+		dingDing,
+        explosion
 	};
 	void start()
 	{

@@ -56,15 +56,21 @@ public class ElectricalController : MonoBehaviour
     {
 		int iterations = 0;
         componentsPath = new List<GameObject>();
+        List<TargetController> targetsWithLEDs = new List<TargetController>();
         //currentTargetConnectors = power.end.connectors;
         previousTarget = power.end;
 		if(!FirstTargetHasTwoConnectors())
 		{
+            audioController.playClip(EnumScript.CustomAudioClips.failHorn);
 			return;
 		}
         if(previousTarget.instantiated != null)
         {
             componentsPath.Add(previousTarget.instantiated);
+            if (previousTarget.instantiated.GetComponent<LED>() != null)
+            {
+                targetsWithLEDs.Add(previousTarget);
+            }
         }
         if( previousTarget.connectors[1].end != previousTarget)
         {
@@ -83,6 +89,10 @@ public class ElectricalController : MonoBehaviour
                     if (currentTarget.instantiated != null)
                     {
                         componentsPath.Add(currentTarget.instantiated);
+                        if (currentTarget.instantiated.GetComponent<LED>() != null)
+                        {
+                            targetsWithLEDs.Add(currentTarget);
+                        }
                     }
                     if (connector.start == currentTarget)
                     {
@@ -125,7 +135,8 @@ public class ElectricalController : MonoBehaviour
 			Debug.Log(comp.name); 
 		}
 
-        totalCurrent = voltageSource.GetVoltage() / totalResistance;
+
+        totalCurrent = totalResistance == 0 ? Mathf.Infinity : voltageSource.GetVoltage() / totalResistance;
         Debug.Log(totalResistance);
         Debug.Log(voltageSource.GetVoltage());
         Debug.Log(totalCurrent);
@@ -133,6 +144,14 @@ public class ElectricalController : MonoBehaviour
 		if(totalCurrent > LEDInCircuit[0].GetComponent<LED>().LEDExplode)
 		{
 			//explode LED here
+            //LEDInCircuit[0].GetComponentInChildren<ParticleEmitter>().Simulate(-2);
+            //LEDInCircuit[0].GetComponentInChildren<ParticleEmitter>().Emit();
+            foreach(var target in targetsWithLEDs)
+            {
+                target.instantiated.GetComponent<Animator>().Play("ExplodeLED");
+                audioController.playClip(EnumScript.CustomAudioClips.explosion);
+                target.instantiated = null;
+            }
 		}
         else if (totalCurrent > LEDInCircuit[0].GetComponent<LED>().threshold)
 		{
@@ -152,10 +171,9 @@ public class ElectricalController : MonoBehaviour
 	{
 		foreach(var LED in LEDsInCircuit)
 		{
-			Light LEDLight = LED.GetComponent<Light>();
+			Light LEDLight = LED.GetComponent<LED>().pointLight;
 			LEDLight.color = Color.red;
-			LEDLight.intensity = totalCurrent * .5f; //arbitrary intensity
-
+			LEDLight.intensity = 8; //arbitrary intensity
 		}
 	}
 }

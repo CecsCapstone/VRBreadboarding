@@ -3,8 +3,10 @@ using System.Collections;
 
 public class LED : MonoBehaviour {
 
-    public float threshold = 5;
-    public float LEDExplode = 6;
+    public float threshold;
+    public float LEDExplode;
+    public Light pointLight;
+    public GameObject LEDObj;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,4 +16,9 @@ public class LED : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void DestroyLED()
+    {
+        Destroy(LEDObj);
+    }
 }

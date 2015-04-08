@@ -31,6 +31,6 @@ public class Resistor : MonoBehaviour {
 		if(scale == EnumScript.ResistanceScale.Ohms)
 			return resistance;
 		else
-			return resistance / 1000;
+			return resistance * 1000;
 	}
 }

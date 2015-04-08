@@ -5,7 +5,7 @@ public class AudioController : MonoBehaviour {
 
 	public AudioClip failHorn;
 	public AudioClip dingDing;
-
+    public AudioClip explosion;
 
 	public void playClip(EnumScript.CustomAudioClips audioClip)
 	{
@@ -17,6 +17,9 @@ public class AudioController : MonoBehaviour {
 			case EnumScript.CustomAudioClips.dingDing:
 				audio.PlayOneShot(dingDing);
 				break;
+            case EnumScript.CustomAudioClips.explosion:
+                audio.PlayOneShot(explosion);
+                break;
 			default:
 				break;
 		}
