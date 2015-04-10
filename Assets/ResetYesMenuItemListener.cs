@@ -18,7 +18,7 @@ public class ResetYesMenuItemListener:MenuBaseListener<NavItemSelector>
 
 	private void HandleSelected(NavItem pNavItem)
 	{
-		resetController.reset();
+		resetController.Reset();
 		//reset
 	}
 }

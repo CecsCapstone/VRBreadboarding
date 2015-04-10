@@ -6,14 +6,8 @@ public class ElectricalController : MonoBehaviour
 {
 
 	public AudioController audioController;
-
     VoltageSourceObject voltageSource;
-    List<GameObject> componentsPath;
-
-    TargetController currentTarget;
-    TargetController previousTarget;
     TargetController voltageTarget;
-    List<Connector> currentTargetConnectors;
     Connector power;
     Connector ground;
     bool isTurnedOn; 
@@ -23,19 +17,12 @@ public class ElectricalController : MonoBehaviour
     {
         voltageSource = GameObject.FindGameObjectWithTag("VoltageSource").GetComponent<VoltageSourceObject>();
         voltageTarget = GameObject.FindGameObjectWithTag("VoltageTarget").GetComponent<TargetController>();
-        currentTargetConnectors = voltageTarget.connectors;
-        power = currentTargetConnectors[0];
-        ground = currentTargetConnectors[1];
+        power = voltageTarget.connectors[0];
+        ground = voltageTarget.connectors[1];
 
         isTurnedOn = false;
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () 
-    {
-
-	}
-
     public void TurnOn()
     {
         isTurnedOn = true;
@@ -45,6 +32,7 @@ public class ElectricalController : MonoBehaviour
     public void TurnOff()
     {
         isTurnedOn = false;
+        turnOffLEDs();
     }
 
     public bool IsTurnedOn()
@@ -55,11 +43,12 @@ public class ElectricalController : MonoBehaviour
     private void Analyze()
     {
 		int iterations = 0;
-        componentsPath = new List<GameObject>();
+        List<GameObject> componentsPath = new List<GameObject>();
         List<TargetController> targetsWithLEDs = new List<TargetController>();
-        //currentTargetConnectors = power.end.connectors;
+        TargetController currentTarget;
+        TargetController previousTarget;
         previousTarget = power.end;
-		if(!FirstTargetHasTwoConnectors())
+		if(previousTarget.connectors.Count < 2)
 		{
             audioController.playClip(EnumScript.CustomAudioClips.failHorn);
 			return;
@@ -140,32 +129,35 @@ public class ElectricalController : MonoBehaviour
         Debug.Log(totalResistance);
         Debug.Log(voltageSource.GetVoltage());
         Debug.Log(totalCurrent);
-		
-		if(totalCurrent > LEDInCircuit[0].GetComponent<LED>().LEDExplode)
-		{
-			//explode LED here
-            //LEDInCircuit[0].GetComponentInChildren<ParticleEmitter>().Simulate(-2);
-            //LEDInCircuit[0].GetComponentInChildren<ParticleEmitter>().Emit();
-            foreach(var target in targetsWithLEDs)
+
+        if (LEDInCircuit.Count != 0)
+        {
+            if (totalCurrent > LEDInCircuit[0].GetComponent<LED>().LEDExplode)
             {
-                target.instantiated.GetComponent<Animator>().Play("ExplodeLED");
-                audioController.playClip(EnumScript.CustomAudioClips.explosion);
-                target.instantiated = null;
+                //explode LED here
+                //LEDInCircuit[0].GetComponentInChildren<ParticleEmitter>().Simulate(-2);
+                //LEDInCircuit[0].GetComponentInChildren<ParticleEmitter>().Emit();
+                foreach (var target in targetsWithLEDs)
+                {
+                    target.instantiated.GetComponent<Animator>().Play("ExplodeLED");
+                    audioController.playClip(EnumScript.CustomAudioClips.explosion);
+                    target.instantiated = null;
+                }
             }
-		}
-        else if (totalCurrent > LEDInCircuit[0].GetComponent<LED>().threshold)
-		{
-			turnOnLEDs(LEDInCircuit, totalCurrent);
-			audioController.playClip(EnumScript.CustomAudioClips.dingDing);
-		}
-        iterations = 0;
+            else if (totalCurrent > LEDInCircuit[0].GetComponent<LED>().threshold)
+            {
+                turnOnLEDs(LEDInCircuit, totalCurrent);
+                audioController.playClip(EnumScript.CustomAudioClips.dingDing);
+            }
+            iterations = 0;
+        }
+        else
+        {
+            audioController.playClip(EnumScript.CustomAudioClips.failHorn);
+        }
+        
         
     }
-
-	private bool FirstTargetHasTwoConnectors()
-	{
-		return previousTarget.connectors.Count == 2;
-	}
 
 	private void turnOnLEDs(List<GameObject> LEDsInCircuit, float totalCurrent)
 	{
@@ -176,4 +168,13 @@ public class ElectricalController : MonoBehaviour
 			LEDLight.intensity = 8; //arbitrary intensity
 		}
 	}
+
+    private void turnOffLEDs()
+    {
+        List<GameObject> LEDLights = new List<GameObject> (GameObject.FindGameObjectsWithTag("LEDLight"));
+        foreach (var LEDLight in LEDLights)
+        {
+            LEDLight.GetComponent<Light>().intensity = 0;
+        }
+    }
 }

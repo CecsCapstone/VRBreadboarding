@@ -33,6 +33,13 @@ namespace VRWidgets
       }
     }
 
+    public void TurnButtonOff()
+    {
+        ButtonTurnsOff();
+        SetMinDistance(offDistance);
+        toggle_state_ = false;
+    }
+
     public override void Awake()
     {
       base.Awake();

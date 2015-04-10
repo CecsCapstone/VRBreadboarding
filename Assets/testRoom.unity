@@ -73,7 +73,6 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
-    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &8021788
 GameObject:
@@ -3046,7 +3045,7 @@ GameObject:
   - 108: {fileID: 630018190}
   m_Layer: 0
   m_Name: Point light
-  m_TagString: Untagged
+  m_TagString: LEDLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11884,19 +11883,20 @@ MonoBehaviour:
   - {fileID: 1192271525}
   - {fileID: 470155220}
   - {fileID: 860980142}
-  - {fileID: 1028050183}
-  - {fileID: 1951925398}
   - {fileID: 1775813740}
+  - {fileID: 1951925398}
+  - {fileID: 1028050183}
   - {fileID: 2028153105}
   - {fileID: 67969255}
   - {fileID: 2128652791}
   - {fileID: 314840998}
   - {fileID: 1244162178}
   - {fileID: 889358022}
-  - {fileID: 782063394}
-  - {fileID: 1552691446}
-  power: {fileID: 1448470525}
-  ground: {fileID: 1506307576}
+  powerTarget: {fileID: 1552691446}
+  groundTarget: {fileID: 782063394}
+  power: {fileID: 1448470520}
+  ground: {fileID: 1506307575}
+  onOff: {fileID: 481436874}
 --- !u!4 &1993322593
 Transform:
   m_ObjectHideFlags: 0
