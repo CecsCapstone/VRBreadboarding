@@ -14,6 +14,7 @@ public abstract class MenuBaseListener<T> : HovercastNavItemListener<T> where T 
     protected GameObject connector {get; private set;}
     protected GameObject LEDObject { get; private set; }
     protected LED LED { get; private set; }
+	protected ResetController resetController{get; private set;}
 	
 
 	protected override void Setup() 
@@ -26,6 +27,7 @@ public abstract class MenuBaseListener<T> : HovercastNavItemListener<T> where T 
 	    connector = GameObject.FindGameObjectWithTag("ConnectorObject");
         LEDObject = GameObject.FindGameObjectWithTag("LEDObject");
         LED = LEDObject.GetComponent<LED>();
+		resetController = GameObject.FindGameObjectWithTag("ResetController").GetComponent<ResetController>();
 	}
 
 

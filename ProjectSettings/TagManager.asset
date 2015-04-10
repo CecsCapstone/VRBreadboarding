@@ -19,6 +19,8 @@ TagManager:
   - ResistorMenuItem
   - ConnectorMenuItem
   - LEDMenuItem
+  - ResetController
+  - TestTag
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
