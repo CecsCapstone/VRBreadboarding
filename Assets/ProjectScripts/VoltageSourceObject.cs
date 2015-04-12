@@ -4,11 +4,9 @@ using System.Collections;
 public class VoltageSourceObject : MonoBehaviour {
 
     private float voltage;
-    private TextMesh text;
+    public TextMesh text;
 	// Use this for initialization
-	void Start () {
-        text = GameObject.FindGameObjectWithTag("VoltageText").GetComponent<TextMesh>();
-	}
+	
 	
 	// Update is called once per frame
 	void Update () {

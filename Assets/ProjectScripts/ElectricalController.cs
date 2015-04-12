@@ -6,6 +6,7 @@ public class ElectricalController : MonoBehaviour
 {
 
 	public AudioController audioController;
+	public TVSkinController tvSkinController;
     VoltageSourceObject voltageSource;
     TargetController voltageTarget;
     Connector power;
@@ -32,6 +33,7 @@ public class ElectricalController : MonoBehaviour
     public void TurnOff()
     {
         isTurnedOn = false;
+		tvSkinController.MakeTvCollin();
         turnOffLEDs();
     }
 
@@ -51,6 +53,7 @@ public class ElectricalController : MonoBehaviour
 		if(previousTarget.connectors.Count < 2)
 		{
             audioController.playClip(EnumScript.CustomAudioClips.failHorn);
+			tvSkinController.MakeTvCollin();
 			return;
 		}
         if(previousTarget.instantiated != null)
@@ -102,6 +105,7 @@ public class ElectricalController : MonoBehaviour
 		if(iterations == 20)
 		{
 			audioController.playClip(EnumScript.CustomAudioClips.failHorn);
+			tvSkinController.MakeTvCollin();
 			return;
 		}
 
@@ -148,12 +152,14 @@ public class ElectricalController : MonoBehaviour
             {
                 turnOnLEDs(LEDInCircuit, totalCurrent);
                 audioController.playClip(EnumScript.CustomAudioClips.dingDing);
+				tvSkinController.UpdateTV(voltageSource.GetVoltage(),totalResistance,totalCurrent);
             }
             iterations = 0;
         }
         else
         {
             audioController.playClip(EnumScript.CustomAudioClips.failHorn);
+			tvSkinController.MakeTvCollin();
         }
         
         
