@@ -14,7 +14,7 @@ public class TVSkinController : MonoBehaviour {
 		MakeTvBlack();
 		voltageText.text = "Voltage: " + voltage.ToString("0.##") + "V";
 		resistanceText.text = "Res: " + resistance.ToString("0.##") + "Ohms";
-		voltageText.text = "Current: " + current.ToString("0.##") + "Amps";
+		currentText.text = "Current: " + current.ToString("0.##") + "Amps";
 	}
 
 	private void MakeTvBlack()
@@ -30,7 +30,7 @@ public class TVSkinController : MonoBehaviour {
 
 		voltageText.text = "";
 		resistanceText.text = "";
-		voltageText.text = "";
+		currentText.text = "";
 	}
 	
 	
