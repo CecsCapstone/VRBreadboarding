@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SelectedObject : MonoBehaviour {
 	public Light light;
-	private bool selected;
 
 	void Start () {
 		light = GetComponent<Light> ();
@@ -27,14 +26,12 @@ public class SelectedObject : MonoBehaviour {
 
 	public void Select()
 	{
-		selected = true;
 		light.color = UnityEngine.Color.green;
 		TurnOnLight ();
 	}
 
 	public void Deselect()
 	{
-		selected = false;
 		light.color = UnityEngine.Color.red;
 		TurnOffLight ();
 	}

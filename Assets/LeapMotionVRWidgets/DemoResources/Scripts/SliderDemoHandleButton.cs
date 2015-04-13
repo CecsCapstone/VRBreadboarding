@@ -8,7 +8,7 @@ public class SliderDemoHandleButton : SliderHandleButtonBase
     public SliderDemoGraphics midLayer;
     public SliderDemoGraphics botLayer;
     public VoltageSourceObject voltageSource;
-    public SliderHandleBase sliderHandle;
+    //public SliderHandleBase sliderHandle;
 
     public override void HandlePressed()
     {

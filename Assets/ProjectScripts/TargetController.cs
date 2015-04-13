@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class TargetController : MonoBehaviour {
 
-    public Light light;
-	GameObject controller;
+    public new Light light;
 	public GameObject instantiated;
     public List<Connector> connectors;
     public int connectorIndex = 0;
@@ -13,7 +12,6 @@ public class TargetController : MonoBehaviour {
 	void Start () 
 	{
 		light = GetComponent<Light> ();
-		controller = GameObject.FindGameObjectWithTag ("HandController");
         if (connectors == null)
             connectors = new List<Connector>();
 	}
@@ -30,8 +28,6 @@ public class TargetController : MonoBehaviour {
             instantiated = Instantiate(placingObject, LEDPosition, Quaternion.Euler(placingObject.transform.localEulerAngles.x, placingObject.transform.localEulerAngles.y, placingObject.transform.localEulerAngles.z)) as GameObject;
         }
         instantiated.GetComponent<SelectedObject>().TurnOffLight();
-        //instantiated.GetComponent<Collider>().enabled = false;
-        //instantiated.GetComponent<Rigidbody>().useGravity = false;
         instantiated.GetComponent<SelectedObject>().enabled = false;
 
         return instantiated;

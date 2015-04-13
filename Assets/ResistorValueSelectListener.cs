@@ -7,7 +7,6 @@ using System;
 public class ResistorValueSelectListener:MenuBaseListener<NavItemSlider>
 {
 	
-	private GameObject controller;
     protected override void Setup()
     {
 		base.Setup();

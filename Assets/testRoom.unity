@@ -1814,7 +1814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshhold: .0500000007
   selected: {fileID: 0}
-  AudioController: {fileID: 0}
 --- !u!114 &378377648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6116,7 +6115,6 @@ MonoBehaviour:
   midLayer: {fileID: 685031538}
   botLayer: {fileID: 1899016766}
   voltageSource: {fileID: 1094579963}
-  sliderHandle: {fileID: 1217097199}
 --- !u!54 &1067171123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7225,6 +7223,7 @@ GameObject:
   - 114: {fileID: 1243289725}
   - 114: {fileID: 1243289727}
   - 82: {fileID: 1243289728}
+  - 114: {fileID: 1243289729}
   m_Layer: 0
   m_Name: HandController
   m_TagString: HandController
@@ -7296,7 +7295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threshhold: .0500000007
   selected: {fileID: 0}
-  AudioController: {fileID: 178218608}
 --- !u!114 &1243289727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7370,6 +7368,55 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1243289729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243289722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aeed8ce4dd04446aa743d6468a99b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHands:
+  - {fileID: 11400000, guid: 9ae8a8acf486840e19397b18a914d915, type: 2}
+  - {fileID: 11400010, guid: e734beeefc33b46219db092ade06f82f, type: 2}
+  - {fileID: 11400004, guid: 704f5d64b4ac849cbb1d88b6a50f0975, type: 2}
+  - {fileID: 11400010, guid: 692c0a0bd7cda4829871ffbf694af029, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rightHands:
+  - {fileID: 11400010, guid: 0c6c9cacc3ef1487daa06cb206b2f421, type: 2}
+  - {fileID: 11400010, guid: fb2d6e2c3c6ef431caaff3cf8beb3b75, type: 2}
+  - {fileID: 11400010, guid: 7a511c744b475498891a2b1acc35e348, type: 2}
+  - {fileID: 11400010, guid: c261d0b9921014c4ea425092ef121aa8, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1244162176
 GameObject:
   m_ObjectHideFlags: 0

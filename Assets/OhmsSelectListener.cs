@@ -4,7 +4,6 @@ using Hovercast.Core.Navigation;
 
 public class OhmsSelectListener: MenuBaseListener<NavItemRadio>
 {
-	GameObject controller;
 
 	protected override void Setup()
 	{

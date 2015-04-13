@@ -31,12 +31,9 @@ public class SimpleGestureRecognize : MonoBehaviour {
 					float y = fingerPosition.y;
 					float z = fingerPosition.z;
 					Vector3 position = new Vector3(x,y,z);
-					Collider[] close_things =
-						Physics.OverlapSphere(position.normalized, 2, -1);
 					
 					GameObject closest = null;
 					float closestDistance = Mathf.Infinity;
-					GrabbableObject[] listOfGrabbableObjects= new GrabbableObject[10];
 					GameObject[] listOfGameObjects = GameObject.FindGameObjectsWithTag("GrabbableObject");
 
 					

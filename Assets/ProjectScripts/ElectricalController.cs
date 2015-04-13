@@ -10,7 +10,6 @@ public class ElectricalController : MonoBehaviour
     VoltageSourceObject voltageSource;
     TargetController voltageTarget;
     Connector power;
-    Connector ground;
     bool isTurnedOn; 
 
 	// Use this for initialization
@@ -19,7 +18,6 @@ public class ElectricalController : MonoBehaviour
         voltageSource = GameObject.FindGameObjectWithTag("VoltageSource").GetComponent<VoltageSourceObject>();
         voltageTarget = GameObject.FindGameObjectWithTag("VoltageTarget").GetComponent<TargetController>();
         power = voltageTarget.connectors[0];
-        ground = voltageTarget.connectors[1];
 
         isTurnedOn = false;
 	}

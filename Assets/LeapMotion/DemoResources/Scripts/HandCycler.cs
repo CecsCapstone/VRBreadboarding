@@ -26,6 +26,8 @@ public class HandCycler : MonoBehaviour
         controller.leftGraphicsModel = leftHands[hand_index_];
         controller.rightGraphicsModel = rightHands[hand_index_];
         controller.DestroyAllHands();
+
+		Debug.Log(leftHands[hand_index_]);
     }
 
     void OnGUI()
