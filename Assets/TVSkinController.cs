@@ -3,16 +3,11 @@ using System.Collections;
 
 public class TVSkinController : MonoBehaviour {
 
-	// Use this for initialization
-
 	public Material blackTv;
 	public Material collinTv;
 	public TextMesh voltageText;
 	public TextMesh resistanceText;
 	public TextMesh currentText;
-	void Start () {
-	
-	}
 
 	public void UpdateTV(float voltage,float resistance,float current)
 	{
@@ -22,14 +17,20 @@ public class TVSkinController : MonoBehaviour {
 		voltageText.text = "Current: " + current.ToString("0.##") + "Amps";
 	}
 
-	public void MakeTvBlack()
+	private void MakeTvBlack()
 	{
+		if(renderer.material != blackTv)
 		renderer.material = blackTv;
 	}
 
 	public void MakeTvCollin()
 	{
+		if(renderer.material !=collinTv)
 		renderer.material = collinTv;
+
+		voltageText.text = "";
+		resistanceText.text = "";
+		voltageText.text = "";
 	}
 	
 	
